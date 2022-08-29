@@ -1,0 +1,16 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { Projects } from "../components/Projects";
+---
+
+<MainLayout href="/projects" title="Viktor M | Projects">
+	<main>
+		<h1 class="text-xl font-bold">Projects</h1>
+		<div class="pt-2"></div>
+		<Projects client:load />
+	</main>
+</MainLayout>
+<style>
+	:root {
+	}
+</style>

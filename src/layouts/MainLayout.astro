@@ -1,0 +1,38 @@
+---
+import "@fontsource/fira-code";
+import { BottomNavigation } from "../components/BottomNavigation";
+export interface Props {
+  title: string;
+  href: string;
+}
+
+const { title, href } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+  <meta
+    name="description"
+    content="Viktor Malmedal personal website and portfolio"
+  />
+  <title>{title}</title>
+
+  <body class="bg-neutral-800 h-screen w-screen text-slate-100">
+    <main class="max-w-screen-md m-auto p-2 pt-24">
+      <slot />
+      <BottomNavigation activeRoute={href} client:load />
+    </main>
+    <style is:global>
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+      body {
+        font-family: "Fira Code", monospace;
+      }
+    </style>
+  </body>
+</html>
