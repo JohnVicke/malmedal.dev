@@ -8,8 +8,8 @@ type Project = {
   id: string;
   title: string;
   tech: string[];
-  website?: { href: string };
-  github: { href: string };
+  website?: { href: string; label: string };
+  github: { href: string; label: string };
   year: number;
   description: string;
 };
@@ -18,9 +18,11 @@ const projects: Project[] = [
   {
     id: v4(),
     website: {
+      label: "VSCode marketplace",
       href: "https://marketplace.visualstudio.com/items?itemName=ViktorMalmedal.monorepo-auto-import",
     },
     github: {
+      label: "Github monorepo fix imports",
       href: "https://github.com/JohnVicke/monorepo-fix-imports",
     },
     tech: ["Node", "TypeScript", "webpack"],
@@ -31,9 +33,11 @@ const projects: Project[] = [
   {
     id: v4(),
     website: {
+      label: "Napa vercel app",
       href: "https://time-keeper-rose.vercel.app/",
     },
     github: {
+      label: "Github napa",
       href: "https://github.com/JohnVicke/napa",
     },
     tech: ["NextJS", "TypeScript", "tRPC", "tailwind", "Prisma", "PostgresQL"],
@@ -43,7 +47,10 @@ const projects: Project[] = [
   },
   {
     id: v4(),
-    github: { href: "https://github.com/JohnVicke/snuber" },
+    github: {
+      label: "Github snuber",
+      href: "https://github.com/JohnVicke/snuber",
+    },
     tech: ["React Native", "Express", "NextJS", "GraphQL", "Apollo"],
     title: "Snuber",
     year: 2020,
@@ -57,15 +64,18 @@ type ProjectProps = {
 
 const ProjectIcon = ({
   icon: Icon,
+  label,
   href,
 }: {
   icon: ({ color }: { color: string }) => JSX.Element;
+  label: string;
   href: string;
 }) => {
   const [hover, setHover] = React.useState(false);
   return (
     <motion.a
       href={href}
+      aria-label={label}
       target="_blank"
       onHoverStart={(_) => setHover(true)}
       onHoverEnd={(_) => setHover(false)}
@@ -84,42 +94,44 @@ const Project = ({ project }: ProjectProps) => {
   const { website, title, tech, year, description, id, github } = project;
 
   return (
-    <motion.div className="flex flex-col gap-4 rounded-lg p-4">
+    <div className="flex flex-col gap-4 rounded-lg p-4">
       <div
         onClick={() => setExpanded(!expanded)}
         className="flex justify-between gap-4 items-center cursor-pointer"
       >
-        <h3 className="font-bold">{title}</h3>
+        <h2 className="font-bold">{title}</h2>
         <span className="flex-1 border-b"></span>
-        <h4 className="font-bold">{year}</h4>
+        <h2 className="font-bold">{year}</h2>
       </div>
-      <motion.div
-        key={id}
-        initial={{ y: -20 }}
-        animate={{ y: 0 }}
-        exit={{ x: -10, opacity: 0 }}
-        className="w-full flex"
-      >
-        <div className="flex w-full flex-col">
-          <div className="flex ">
-            <div className="flex-1">
-              <p className="text-neutral-200 flex-wrap">{description}</p>
-            </div>
-            <div className="gap-2 flex flex-col">
-              <ProjectIcon icon={GithubSvg} href={github.href} />
-              {website && <ProjectIcon icon={BrowserSvg} href={website.href} />}
-            </div>
+      <div className="flex w-full flex-col">
+        <div className="flex ">
+          <div className="flex-1">
+            <p className="text-neutral-300 flex-wrap">{description}</p>
           </div>
-          <div className="flex gap-2 mt-2 flex-wrap items-center">
-            {tech.map((t) => (
-              <div key={`id-${t}`} className="text-xs ">
-                <p>{t}</p>
-              </div>
-            ))}
+          <div className="gap-2 flex flex-col">
+            <ProjectIcon
+              label={github.label}
+              icon={GithubSvg}
+              href={github.href}
+            />
+            {website && (
+              <ProjectIcon
+                label={website.label}
+                icon={BrowserSvg}
+                href={website.href}
+              />
+            )}
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+        <div className="flex gap-2 mt-4 flex-wrap items-center">
+          {tech.map((t) => (
+            <div key={`id-${t}`} className="text-xs ">
+              <p>{t}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -136,7 +148,7 @@ export const Projects = () => {
             transition: {
               delay: i / 10,
               type: "spring",
-              damping: 5,
+              damping: 10,
             },
           }}
         >
