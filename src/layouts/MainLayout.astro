@@ -4,9 +4,10 @@ import { BottomNavigation } from "../components/BottomNavigation";
 export interface Props {
   title: string;
   href: string;
+  disableNav?: boolean;
 }
 
-const { title, href } = Astro.props as Props;
+const { title, href, disableNav } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ const { title, href } = Astro.props as Props;
   <body class="bg-neutral-800 h-screen w-screen text-slate-100">
     <main class="max-w-screen-md m-auto p-2 pt-24">
       <slot />
-      <BottomNavigation activeRoute={href} client:load />
+      {!disableNav && <BottomNavigation activeRoute={href} client:load />}
     </main>
     <style is:global>
       @tailwind base;
