@@ -7,6 +7,7 @@ export interface Props {
   disableNav?: boolean;
 }
 
+const vercelUrl = import.meta.env.VERCEL_URL;
 const { title, href, disableNav } = Astro.props as Props;
 ---
 
@@ -25,7 +26,11 @@ const { title, href, disableNav } = Astro.props as Props;
   <body class="bg-neutral-800 h-screen w-screen text-slate-100">
     <main class="max-w-screen-md m-auto p-2 pt-24">
       <slot />
-      {!disableNav && <BottomNavigation activeRoute={href} client:load />}
+      {
+        !disableNav && (
+          <BottomNavigation url={vercelUrl} activeRoute={href} client:load />
+        )
+      }
     </main>
     <style is:global>
       @tailwind base;

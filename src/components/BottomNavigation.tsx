@@ -66,11 +66,17 @@ const items: Item[] = [
   },
 ];
 
-export const BottomNavigation = ({ activeRoute }: { activeRoute: string }) => {
+export const BottomNavigation = ({
+  activeRoute,
+  url,
+}: {
+  activeRoute: string;
+  url: string;
+}) => {
   let initial = false;
 
   if (typeof window !== "undefined") {
-    initial = document.referrer.includes("localhost");
+    initial = document.referrer.includes(url);
   }
 
   const animation = {
