@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseIcon, BaseIconProps } from "./Icon";
+import { GodComponent, BaseIconProps } from "./Icon";
 
 export const GithubSvg = ({ color }: { color: string }) => (
   <svg
@@ -23,5 +23,5 @@ export const GithubSvg = ({ color }: { color: string }) => (
 );
 
 export const GithubIcon = (props: BaseIconProps) => (
-  <BaseIcon {...props} Icon={GithubSvg} />
+  <GodComponent {...props} Icon={GithubSvg} />
 );

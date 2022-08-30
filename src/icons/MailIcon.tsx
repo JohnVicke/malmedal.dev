@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseIcon, BaseIconProps } from "./Icon";
+import { GodComponent, BaseIconProps } from "./Icon";
 
 const MailSvg = ({ color }: { color: string }) => (
   <svg
@@ -23,5 +23,5 @@ const MailSvg = ({ color }: { color: string }) => (
 );
 
 export const MailIcon = (props: BaseIconProps) => (
-  <BaseIcon {...props} Icon={MailSvg} />
+  <GodComponent {...props} Icon={MailSvg} />
 );

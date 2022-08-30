@@ -5,9 +5,11 @@ import { Projects } from "../components/Projects";
 
 <MainLayout href="/projects" title="Viktor M | Projects">
 	<main>
-		<h1 class="text-xl font-bold text-neutral-200">Projects</h1>
+		<h1 class="text-xl font-bold text-neutral-900 dark:text-neutral-200">
+			Projects
+		</h1>
 		<div class="pt-2"></div>
-		<Projects client:load />
+		<Projects client:idle />
 	</main>
 </MainLayout>
 <style>
