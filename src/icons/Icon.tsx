@@ -31,18 +31,17 @@ export const GodComponent = ({
 
   const tooltipAnimation: AnimationProps = {
     initial: {
-      y: -10,
+      y: 30,
       opacity: 0,
-      scale: 0,
     },
     animate: {
-      y: -50,
+      y: 45,
       opacity: 1,
       scale: 1,
     },
     exit: {
-      y: -30,
-      scale: 0,
+      scale: 0.5,
+      y: 40,
       opacity: 0,
     },
     transition: {
@@ -60,6 +59,7 @@ export const GodComponent = ({
         onHoverEnd={(_) => setHover(false)}
         whileHover={{
           scale: 1.05,
+          y: -10,
           transition: {
             type: "spring",
             damping: 20,
