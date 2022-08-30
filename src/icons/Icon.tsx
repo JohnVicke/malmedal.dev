@@ -83,7 +83,7 @@ export const GodComponent = ({
           />
         )}
         {component && component}
-        <AnimatePresence initial={initial} exitBeforeEnter>
+        <AnimatePresence initial={initial} mode="wait">
           {(hover || isActive) && (
             <motion.div {...tooltipAnimation} className="absolute">
               <p className="text-sm text-neutral-700 dark:text-neutral-300">

@@ -14,7 +14,11 @@ const { title, href, disableNav } = Astro.props as Props;
 <!DOCTYPE html>
 <html lang="en">
   <script is:inline>
-    const darkMode = localStorage.getItem("darkMode");
+    let darkMode = localStorage.getItem("darkMode");
+    if (!darkMode) {
+      darkMode = "true";
+      localStorage.setItem("darkMode", "true");
+    }
     const theme = darkMode === "true" ? "dark" : "light";
     document.querySelector("html").className = theme;
   </script>
