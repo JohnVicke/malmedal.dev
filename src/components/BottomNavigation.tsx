@@ -8,20 +8,13 @@ import { HomeIcon } from "../icons/HomeIcon";
 import { LinkedInIcon } from "../icons/LinkedInIcon";
 import { MailIcon } from "../icons/MailIcon";
 import { RocketIcon } from "../icons/RocketIcon";
-import type { BaseIconProps } from "../icons/Icon";
+import { ToggleColorTheme } from "./ToggleColorTheme";
 
-const Divider = () => <div className="w-[2px] h-12 bg-neutral-600" />;
+const Divider = () => (
+  <div className="w-[2px] h-12 bg-neutral-400 dark:bg-neutral-600" />
+);
 
-type Item = {
-  id: string;
-  type: "route" | "divider" | "social";
-  name?: string;
-  href?: string;
-  target?: string;
-  icon: ({ tooltip, isActive }: BaseIconProps) => JSX.Element;
-};
-
-const items: Item[] = [
+const pages = [
   {
     id: v4(),
     type: "route",
@@ -36,11 +29,9 @@ const items: Item[] = [
     href: "/projects",
     icon: RocketIcon,
   },
-  {
-    id: v4(),
-    type: "divider",
-    icon: Divider,
-  },
+];
+
+const socials = [
   {
     id: v4(),
     type: "route",
@@ -66,18 +57,16 @@ const items: Item[] = [
   },
 ];
 
-export const BottomNavigation = ({
-  activeRoute,
-  url,
-}: {
-  activeRoute: string;
-  url: string;
-}) => {
-  let initial = false;
+export const BottomNavigation = ({ activeRoute }: { activeRoute: string }) => {
+  const [initial, setInitial] = React.useState(false);
+  const [isServer, setIsServer] = React.useState(true);
 
-  if (typeof window !== "undefined") {
-    initial = document.referrer.includes(url);
-  }
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setInitial(document.referrer.includes("localhost"));
+      setIsServer(false);
+    }
+  }, []);
 
   const animation = {
     initial: {
@@ -88,6 +77,10 @@ export const BottomNavigation = ({
       bottom: 10,
       opacity: 1,
     },
+    exit: {
+      bottom: -50,
+      opacit: 0,
+    },
     transition: {
       type: "spring",
       damping: 10,
@@ -95,26 +88,37 @@ export const BottomNavigation = ({
     },
   };
 
+  if (isServer) return null;
+
   return (
-    <AnimatePresence initial={!initial}>
+    <AnimatePresence>
       <motion.div
         {...animation}
-        className="bg-neutral-800 backdrop-blur-md rounded-3xl max-w-[90%] md:max-w-md w-fit fixed translate-x-[-50%] left-[50%]"
+        className="backdrop-blur-md rounded-3xl max-w-[90%] sm:max-w-md w-fit fixed translate-x-[-50%] left-[50%]"
       >
         <div className="m-2 rounded-2xl md:rounded-none p-2 flex gap-4 justify-start items-center overflow-x-scroll sm:overflow-visible">
-          {items.map(({ type, icon: Icon, id, href, target, name }: Item) =>
-            type === "divider" ? (
-              <Divider key={id} />
-            ) : (
-              <a href={href} target={target} key={id} aria-label={name}>
-                <Icon
-                  initial={!initial}
-                  tooltip={name ?? ""}
-                  isActive={href === activeRoute}
-                />
-              </a>
-            )
-          )}
+          {pages.map(({ href, id, icon: Icon, name }) => (
+            <a href={href} key={id} aria-label={name}>
+              <Icon
+                initial={!initial}
+                tooltip={name}
+                isActive={href === activeRoute}
+              />
+            </a>
+          ))}
+          <div className="hidden sm:block">
+            <Divider />
+          </div>
+          {socials.map(({ href, id, icon: Icon, name }) => (
+            <a href={href} target="_blank" key={id} aria-label={name}>
+              <Icon
+                initial={!initial}
+                tooltip={name ?? ""}
+                isActive={href === activeRoute}
+              />
+            </a>
+          ))}
+          <ToggleColorTheme />
         </div>
       </motion.div>
     </AnimatePresence>

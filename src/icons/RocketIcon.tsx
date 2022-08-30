@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseIcon, BaseIconProps } from "./Icon";
+import { GodComponent, BaseIconProps } from "./Icon";
 
 const RocketSvg = ({ color }: { color: string }) => (
   <svg
@@ -23,5 +23,5 @@ const RocketSvg = ({ color }: { color: string }) => (
 );
 
 export const RocketIcon = (props: BaseIconProps) => (
-  <BaseIcon {...props} Icon={RocketSvg} />
+  <GodComponent {...props} Icon={RocketSvg} />
 );
