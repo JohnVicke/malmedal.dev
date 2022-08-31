@@ -96,7 +96,7 @@ export const BottomNavigation = ({ activeRoute }: { activeRoute: string }) => {
         {...animation}
         className="backdrop-blur-md rounded-3xl max-w-[90%] sm:max-w-none w-fit fixed translate-x-[-50%] left-[50%]"
       >
-        <div className="m-2 rounded-2xl md:rounded-none p-2 flex gap-4 justify-start items-center overflow-x-scroll sm:overflow-visible">
+        <div className="m-2 rounded-2xl md:rounded-none p-2 flex gap-4 justify-start items-center overflow-x-scroll overflow-y-hidden sm:overflow-visible">
           {pages.map(({ href, id, icon: Icon, name }) => (
             <a href={href} key={id} aria-label={name}>
               <Icon

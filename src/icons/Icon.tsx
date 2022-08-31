@@ -71,7 +71,7 @@ export const GodComponent = ({
           transition: { type: "spring", damping: 5, stiffness: 150 },
         }}
         {...containerAnim}
-        className="p-2 bg-neutral-300 dark:bg-neutral-700 relative hover:bg-neutral-400 dark:hover:bg-neutral-600 w-full min-w-[64px] cursor-pointer h-16 rounded-xl items-center justify-center flex"
+        className="p-2 mb-4 bg-neutral-300 dark:bg-neutral-700 relative hover:bg-neutral-400 dark:hover:bg-neutral-600 w-full min-w-[64px] cursor-pointer h-16 rounded-xl items-center justify-center flex"
       >
         {Icon && (
           <Icon
