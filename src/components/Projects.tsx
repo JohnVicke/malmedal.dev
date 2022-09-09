@@ -1,8 +1,8 @@
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import { v4 } from "uuid";
 import { BrowserSvg } from "../icons/BrowserIcon";
-import { GithubIcon, GithubSvg } from "../icons/GithubIcon";
+import { GithubSvg } from "../icons/GithubIcon";
 
 type Project = {
   id: string;
