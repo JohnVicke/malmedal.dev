@@ -1,8 +1,8 @@
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import { v4 } from "uuid";
 import { BrowserSvg } from "../icons/BrowserIcon";
-import { GithubIcon, GithubSvg } from "../icons/GithubIcon";
+import { GithubSvg } from "../icons/GithubIcon";
 
 type Project = {
   id: string;
@@ -114,11 +114,11 @@ const Project = ({ project }: ProjectProps) => {
         <h2 className="font-bold">{year}</h2>
       </div>
       <div className="text-neutral-700 dark:text-neutral-300 flex w-full flex-col">
-        <div className="flex ">
-          <div className="flex-1">
-            <p className=" flex-wrap">{description}</p>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex-1 flex-wrap">
+            <p>{description}</p>
           </div>
-          <div className="gap-2 flex flex-col ml-4">
+          <div className="gap-2 flex flex-row sm:flex-col">
             <ProjectIcon
               label={github.label}
               icon={GithubSvg}
