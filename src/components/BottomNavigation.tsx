@@ -37,7 +37,7 @@ const socials = [
     type: "route",
     name: "Mail",
     icon: MailIcon,
-    href: "mailto:viktormalmedal@gmail.com",
+    href: "mailto:viktor@malmedal.dev",
   },
   {
     id: v4(),
