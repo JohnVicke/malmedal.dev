@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/app/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ["var(--font-lora)"],
+        sans: ["var(--font-lato)"],
+      },
+    },
   },
   future: {
     hoverOnlyWhenSupported: true,
