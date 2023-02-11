@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={clsx(
-        "h-full bg-neutral-100 text-black",
+        "min-h-screen bg-neutral-100 text-black",
         "dark:bg-gradient-to-t dark:from-[#06040F] dark:to-[#14121B] dark:text-white",
         lora.variable,
         lato.variable,
