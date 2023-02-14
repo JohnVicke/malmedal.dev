@@ -5,9 +5,9 @@ export const config = {
   runtime: "edge",
 };
 
-const getErrorResponse = (error: Array<{ message: string }>) => {
+function getErrorResponse(error: Array<{ message: string }>) {
   return JSON.stringify({ error });
-};
+}
 
 export default function handler(req: NextRequest) {
   if (req.method !== "GET") {
@@ -17,7 +17,8 @@ export default function handler(req: NextRequest) {
     return new Response(getErrorResponse([{ message: "Could not get geo data" }]), { status: 500 });
   }
 
-  const lastVisit: LastVisit = { country: req.geo?.country, city: req.geo?.city, date: new Date() };
+  const lastVisit: LastVisit = { country: req.geo.country, city: req.geo.city, date: new Date() };
+
   return new Response(
     JSON.stringify({
       lastVisit,
