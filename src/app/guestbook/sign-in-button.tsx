@@ -3,5 +3,5 @@
 import { signIn } from "next-auth/react";
 
 export const SignInButton = () => {
-  return <button onClick={() => signIn()}>Log in to Sign our guestbook!</button>;
+  return <button onClick={() => signIn()}>Continue using GitHub</button>;
 };
