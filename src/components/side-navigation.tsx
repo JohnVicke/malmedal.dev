@@ -35,7 +35,7 @@ const navigationItems = [
 export const SideNavigation = () => {
   const pathname = usePathname();
   return (
-    <aside className="sticky min-w-[200px]">
+    <aside className="sticky mr-12 min-w-[150px] border-r border-[#251E35]">
       <nav className="flex flex-col gap-2">
         {navigationItems.map(({ href, title }) => {
           const isActive = pathname === href;
@@ -44,8 +44,8 @@ export const SideNavigation = () => {
               href={href}
               key={href}
               className={clsx(
-                "block w-fit rounded-md p-2 font-serif text-sm font-normal opacity-70 hover:bg-neutral-200 dark:hover:bg-neutral-800",
-                isActive && "bg-neutral-200 font-bold opacity-100 dark:bg-neutral-800",
+                "block w-fit rounded-md p-2 font-serif font-normal opacity-70 hover:bg-neutral-200 dark:hover:bg-neutral-800",
+                isActive && "font-bold opacity-100",
               )}
             >
               {title}
