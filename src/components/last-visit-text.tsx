@@ -1,14 +1,10 @@
 "use client";
 
 import { LastVisit } from "@/types/last-visit";
+import { fetcher } from "@/utils/fetch";
 import { AnimatePresence, AnimationProps, motion } from "framer-motion";
 import React from "react";
 import useSWR from "swr";
-
-async function fetcher<TOuput = any>(input: RequestInfo, init?: RequestInit): Promise<TOuput> {
-  const res = await fetch(input, init);
-  return res.json();
-}
 
 const container: AnimationProps["variants"] = {
   hidden: { x: -10 },
