@@ -9,7 +9,7 @@ const postWithAuthorSelector = {
   updatedAt: true,
   content: true,
   author: {
-    select: { name: true, htmlUrl: true },
+    select: { name: true, htmlUrl: true, image: true },
   },
 };
 
