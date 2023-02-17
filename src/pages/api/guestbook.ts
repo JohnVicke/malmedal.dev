@@ -1,42 +1,53 @@
-import { GuestbookMessage } from "@/types/guestbook-message";
+import { prisma } from "@/lib/prisma";
+import { ApiResponse } from "@/types/api-response";
+import { PostWithAuthor } from "@/types/post-with-author";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 
-interface ErrorMessage {
-  message: string;
-}
+const postWithAuthorSelector = {
+  id: true,
+  updatedAt: true,
+  content: true,
+  author: {
+    select: { name: true, htmlUrl: true },
+  },
+};
 
-type Data<T> = T | { error: ErrorMessage[] };
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ApiResponse<PostWithAuthor | PostWithAuthor[]>>,
+) {
+  if (req.method === "GET") {
+    const messages = (await prisma.post.findMany({ select: postWithAuthorSelector })) satisfies PostWithAuthor[];
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data<GuestbookMessage>>) {
+    return res.status(200).json({ data: messages });
+  }
+
   const session = await getSession({ req });
 
   if (!session?.user) {
-    return res.status(403).json({ error: [{ message: "Unauthorized" }] });
+    return res.status(401).json({ error: [{ message: "Unauthorized" }] });
   }
 
-  const { name, email, id } = session.user;
+  const { id } = session.user;
 
   if (req.method === "POST") {
-    // run post stuff
-    return res.status(200).json({
-      id: "1",
-      message: `Hello there! ${name} ${email}`,
-      type: "update",
-      name: "Viktor Malmedal",
-      updateAt: new Date(),
-    });
+    const { content } = req.body;
+    console.log(content);
+    const message = (await prisma.post.create({
+      data: { content, author: { connect: { id } } },
+      select: postWithAuthorSelector,
+    })) satisfies PostWithAuthor;
+    return res.status(201).json({ data: message });
+  }
+
+  if (req.method === "PUT") {
+    return res.status(425).json({ error: [{ message: "not implemented" }] });
   }
 
   if (req.method === "DELETE") {
     // run delete stuff
-    return res.status(204).json({
-      id: "1",
-      message: `Hello there! ${name} ${email}`,
-      type: "update",
-      name: "Viktor Malmedal",
-      updateAt: new Date(),
-    });
+    return res.status(425).json({ error: [{ message: "not implemented" }] });
   }
 
   return res.status(405).json({ error: [{ message: "Method not allowed!" }] });
