@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
           name: profile.name,
           email: profile.email,
           id: profile.id.toString(),
-          image: profile.image,
+          image: profile.avatar_url,
           htmlUrl: profile.html_url,
         };
       },
