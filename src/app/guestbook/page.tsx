@@ -1,97 +1,13 @@
+import { CustomLink } from "@/components/custom-link";
 import { GithubIcon } from "@/components/icons";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { GuestbookMessage } from "@/types/guestbook-message";
+import { PostWithAuthor } from "@/types/post-with-author";
+import { fetchApi } from "@/utils/fetch";
 import { getServerSession } from "next-auth/next";
 import { SignGuestbookForm } from "./sign-guestbook-form";
 import { SignInButton } from "./sign-in-button";
 import { SignOutButton } from "./sign-out-button";
 
-const mockMessage: GuestbookMessage[] = [
-  {
-    id: " 1",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 2",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 3",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 4",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 5",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 6",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 7",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 8",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 9",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 10",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 11",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-  {
-    id: " 12",
-    updateAt: new Date(),
-    name: "Viktor Malmedal",
-    type: "update",
-    message: "This is a very cool portfolio thank sfor being here",
-  },
-];
 
 export default async function Guestbook() {
   const session = await getServerSession(authOptions);
