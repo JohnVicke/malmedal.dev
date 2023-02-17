@@ -18,8 +18,14 @@ export default async function Guestbook() {
 
   return (
     <div className="flex flex-col gap-4">
-      {!session?.user ? <SignInButton /> : <SignOutButton />}
-      <SignGuestbookForm />
+      {!session?.user ? (
+        <SignInButton />
+      ) : (
+        <>
+          <SignOutButton />
+          <SignGuestbookForm />
+        </>
+      )}
       <ul className="flex flex-col gap-4">
         {messages?.map(({ id, updatedAt, content, author }) => (
           <li className="rounded-md px-4 py-2 hover:bg-[#0B0713]" key={id}>
