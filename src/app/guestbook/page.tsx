@@ -8,6 +8,11 @@ import { SignGuestbookForm } from "./sign-guestbook-form";
 import { SignInButton } from "./sign-in-button";
 import { SignOutButton } from "./sign-out-button";
 
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Deletebutton from "./delete-button";
+const ReactionButton = dynamic(() => import("./reaction-button"));
+
 function fetchMessages() {
   return fetchApi<PostWithAuthor[]>("/guestbook");
 }
@@ -26,21 +31,31 @@ export default async function Guestbook() {
           <SignGuestbookForm />
         </>
       )}
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col">
         {messages?.map(({ id, updatedAt, content, author }) => (
-          <li className="rounded-md px-4 py-2 hover:bg-[#0B0713]" key={id}>
-            <div className="flex justify-between opacity-60 ">
-              {author.htmlUrl && (
-                <CustomLink href={author.htmlUrl}>
-                  <h3 className="flex items-center gap-2">
-                    <GithubIcon />
-                    {author?.name}
-                  </h3>
-                </CustomLink>
-              )}
-              <h4>{new Date(updatedAt).toLocaleDateString()}</h4>
+          <li className="group relative rounded-md p-2" key={id}>
+            <div className="invisible absolute -bottom-2 right-4 flex gap-1 rounded-md border border-gray-800 bg-[#0B0713] p-1 group-hover:visible">
+              <ReactionButton />
+              <Deletebutton />
             </div>
-            <p>{content}</p>
+            <div className="flex gap-2">
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-lg bg-gray-900">
+                {author.image ? (
+                  <Image className="rounded-lg" fill src={author.image} alt={`profile image of ${author.name}`} />
+                ) : (
+                  <GithubIcon />
+                )}
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-end gap-2">
+                  <CustomLink href={author.htmlUrl || ""}>
+                    <h3 className="font-bold hover:underline">{author?.name}</h3>
+                  </CustomLink>
+                  <p className="text-sm opacity-60">{new Date(updatedAt).toLocaleDateString()}</p>
+                </div>
+                <p>{content}</p>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
