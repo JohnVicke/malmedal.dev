@@ -1,12 +1,16 @@
 "use client";
 
+import { PostWithAuthor } from "@/types/post-with-author";
+import { fetchApi } from "@/utils/fetch";
+import { Post } from "@prisma/client";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-async function postGuestbookMessage() {
-  const res = await fetch("/api/guestbook", { method: "POST" });
-  return res.json();
+type CreatePostInput = Pick<Post, "content">;
+
+function postGuestbookMessage(data: CreatePostInput) {
+  return fetchApi<PostWithAuthor>("/guestbook", { method: "POST", body: JSON.stringify(data) });
 }
 
 export const SignGuestbookForm = () => {
@@ -16,8 +20,9 @@ export const SignGuestbookForm = () => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
-    const res = await postGuestbookMessage();
-    console.log({ res });
+    const input = e.currentTarget.elements.namedItem("text-input") as HTMLInputElement;
+    const res = await postGuestbookMessage({ content: input.value });
+    input.value = "";
     startTransition(() => router.refresh());
   };
 
