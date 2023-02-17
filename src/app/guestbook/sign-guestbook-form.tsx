@@ -31,7 +31,7 @@ export const SignGuestbookForm = () => {
       <input
         placeholder="Psst, you can write something here..."
         className={clsx(
-          "w-full rounded-md py-2 pl-4 pr-32",
+          "w-full rounded-md py-3 pl-4 pr-32",
           "text-neutral-900",
           "dark:bg-[#1C1926] dark:text-neutral-100",
         )}
