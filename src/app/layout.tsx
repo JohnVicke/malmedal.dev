@@ -1,9 +1,11 @@
-import { SideNavigation } from "@/components/side-navigation";
+import { SideNavigation } from "@/components/navigation/side-navigation";
+import { MobileNavigation } from "@/components/navigation/mobile-navigation";
 import { clsx } from "clsx";
 import "./globals.css";
 import { Lora, Lato } from "@next/font/google";
 
 const lora = Lora({
+  weight: ["400", "700"],
   variable: "--font-lora",
   display: "swap",
   subsets: ["latin"],
@@ -50,8 +52,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       )}
     >
       <head />
-      <body className="relative mx-4 mt-28 flex max-w-screen-md antialiased lg:mx-auto">
-        <SideNavigation />
+      <body className="relative mx-4 mt-4 flex max-w-screen-md antialiased md:mt-28 lg:mx-auto">
+        <SideNavigation className="hidden md:block" />
+        <MobileNavigation className="block md:hidden" />
         <main className="flex min-w-0 flex-auto flex-col gap-4 px-2 pb-12 md:mt-0 md:px-0">{children}</main>
       </body>
     </html>

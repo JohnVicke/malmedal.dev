@@ -1,50 +1,33 @@
 import { CustomLink } from "@/components/custom-link";
 import { Heading } from "@/components/heading";
-import { GithubIcon, LinkedInIcon, MailIcon, VimaIcon } from "@/components/icons";
+import { GithubIcon } from "@/components/icons";
 import { LastVisitText } from "@/components/last-visit-text";
 import Image from "next/image";
 
-async function getLastVisit() {
-  const response = await fetch("http://localhost:3000/api/last-visit");
-  const { data } = await response.json();
-  return data;
-}
-
-export default async function HomePage() {
-  const lastVisit = await getLastVisit();
-  console.log({ lastVisit });
-
+export default function HomePage() {
   return (
     <>
       <div className="flex justify-between">
         <div className="relative flex flex-col gap-6">
           <LastVisitText />
           <div className="flex items-center gap-4">
-            <VimaIcon />
             <Heading topDecoration={<TopHeadingDecoration />} bottomDecoration={<BottomHeadingDecoration />}>
               Viktor Malmedal
             </Heading>
           </div>
-          <p>About me</p>
-        </div>
-        <div className="flex flex-col items-center gap-4">
-          <Image className="rounded-full" src="/images/viktor.jpg" alt="profile image" width={100} height={100} />
-          <div className="flex gap-4">
-            <CustomLink href="https://github.com/johnvicke">
-              <GithubIcon />
-            </CustomLink>
-            <CustomLink href="https://www.linkedin.com/in/viktor-malmedal/">
-              <LinkedInIcon />
-            </CustomLink>
-            <CustomLink href="mailto:viktor@malmedal.dev">
-              <MailIcon />
-            </CustomLink>
-          </div>
+          <p>
+            Hi 👋, I&apos;m Viktor Malmedal, currently full stack engineer at Cygni specializing in web and mobile
+            development.
+          </p>
         </div>
       </div>
-      <CustomLink className="inline-flex items-center gap-2 text-sm" href="https://github.com/johnvicke/malmedal.dev">
+      <Image className="rounded-lg" src="/images/viktor.jpg" alt="profile image" width={100} height={100} />
+      <CustomLink
+        className="group inline-flex items-center gap-2 text-sm"
+        href="https://github.com/johnvicke/malmedal.dev"
+      >
         <GithubIcon />
-        <span className="opacity-70 hover:opacity-100">View source</span>
+        <span className="opacity-70  group-hover:opacity-100">View source</span>
       </CustomLink>
     </>
   );

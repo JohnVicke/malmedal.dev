@@ -7,7 +7,7 @@ interface HeadingProps {
 
 export const Heading = ({ topDecoration, bottomDecoration, children }: React.PropsWithChildren<HeadingProps>) => {
   return (
-    <h1 className="relative font-serif text-4xl font-semibold">
+    <h1 className="relative mb-2 font-serif text-4xl font-semibold">
       {topDecoration}
       {children}
       {bottomDecoration}
