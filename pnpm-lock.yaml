@@ -21,7 +21,6 @@ specifiers:
   prisma: ^4.10.1
   react: 18.2.0
   react-dom: 18.2.0
-  react-prisma: ^4.10.1
   swr: ^2.0.3
   tailwindcss: 3.2.4
   typescript: 4.9.4
@@ -38,7 +37,6 @@ dependencies:
   next-auth: 4.19.2_3vryta7zmbcsw4rrqf4axjqggm
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-prisma: 4.10.1_uq5zjj6xqcqdsiscuapingkbmi
   swr: 2.0.3_react@18.2.0
 
 devDependencies:
@@ -2328,16 +2326,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: false
-
-  /react-prisma/4.10.1_uq5zjj6xqcqdsiscuapingkbmi:
-    resolution: {integrity: sha512-BhiTPmqRoxR3UsnkDHiLZ0xY6TcjlaWnn5lRL9QI/4pMULwkW/KaVnyC0ZlWbA+Ro7AgaksrXpVZeG3rByMsCA==}
-    peerDependencies:
-      '@prisma/client': '*'
-      react: '>=17.0.0'
-    dependencies:
-      '@prisma/client': 4.10.1_prisma@4.10.1
-      react: 18.2.0
     dev: false
 
   /react/18.2.0:
