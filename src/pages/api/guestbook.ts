@@ -18,7 +18,10 @@ export default async function handler(
   res: NextApiResponse<ApiResponse<PostWithAuthor | PostWithAuthor[]>>,
 ) {
   if (req.method === "GET") {
-    const messages = (await prisma.post.findMany({ select: postWithAuthorSelector })) satisfies PostWithAuthor[];
+    const messages = (await prisma.post.findMany({
+      select: postWithAuthorSelector,
+      orderBy: { createdAt: "desc" },
+    })) satisfies PostWithAuthor[];
 
     return res.status(200).json({ data: messages });
   }
