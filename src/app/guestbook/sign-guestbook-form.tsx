@@ -27,20 +27,16 @@ export const SignGuestbookForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <input
         placeholder="Psst, you can write something here..."
-        className={clsx(
-          "w-full rounded-md py-3 pl-4 pr-32",
-          "text-neutral-900",
-          "dark:bg-[#1C1926] dark:text-neutral-100",
-        )}
+        className={clsx("w-full rounded-md py-3 px-4", "text-neutral-900", "dark:bg-[#1C1926] dark:text-neutral-100")}
         name="text-input"
         id="text-input"
         type="text"
       />
-      <button disabled={isPending} type="submit" className="float-right">
-        Sign guestbook
+      <button disabled={isPending} type="submit" className="h-auto w-fit rounded-md bg-[#251E35] px-4">
+        Sign
       </button>
     </form>
   );
