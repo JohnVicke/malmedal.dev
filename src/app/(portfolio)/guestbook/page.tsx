@@ -6,6 +6,7 @@ import { fetchApi } from "@/utils/fetch";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import { SignGuestbookForm } from "./sign-guestbook-form";
+import { SignInButton } from "./sign-in-button";
 
 function fetchMessages() {
   return fetchApi<PostWithAuthor[]>("/guestbook");
@@ -17,10 +18,12 @@ export default async function Guestbook() {
 
   return (
     <div className="flex flex-col gap-4">
-      {session?.user && (
+      {session?.user ? (
         <>
           <SignGuestbookForm />
         </>
+      ) : (
+        <SignInButton />
       )}
       <ul className="flex flex-col gap-2">
         {messages?.map(({ id, updatedAt, content, author }) => (
