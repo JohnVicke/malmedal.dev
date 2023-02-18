@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { CustomLink } from "../custom-link";
 import { GithubIcon, LinkedInIcon, MailIcon } from "../icons";
-import { NavigationItem } from "./navigation-item";
+import { NavigationItem } from "./";
 
 export const MobileNavigation = ({ navigation, className }: { className?: string; navigation: NavigationItem[] }) => {
   const [open, setOpen] = React.useState(false);

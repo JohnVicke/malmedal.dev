@@ -1,4 +1,4 @@
-import { NavigationItem } from "./navigation-item";
+import type { NavigationItem } from "@/components/navigation";
 
 export const internalNavigation: NavigationItem[] = [
   {

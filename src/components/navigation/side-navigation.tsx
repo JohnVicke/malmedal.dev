@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { CustomLink } from "../custom-link";
 import { GithubIcon, LinkedInIcon, MailIcon, VimaIcon } from "../icons";
-import { NavigationItem } from "./navigation-item";
+import { NavigationItem } from "./";
 
 export const SideNavigation = ({ className, navigation }: { className?: string; navigation: NavigationItem[] }) => {
   const pathname = usePathname();

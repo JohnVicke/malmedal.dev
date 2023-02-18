@@ -1,5 +1,5 @@
-import { internalNavigation } from "@/components/navigation/internal-nav-items";
 import { SideNavigation } from "@/components/navigation/side-navigation";
+import { internalNavigation } from "./internal-nav-items";
 
 export const metadata = {
   title: {

@@ -1,4 +1,4 @@
-import { navigationItems } from "@/components/navigation/main-nav-items";
+import { navigationItems } from "./main-nav-items";
 import { Navigation } from "@/components/navigation";
 
 export const metadata = {
