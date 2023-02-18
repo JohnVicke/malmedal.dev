@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { CustomLink } from "../custom-link";
 import { GithubIcon, LinkedInIcon, MailIcon, VimaIcon } from "../icons";
-import { navigationItems } from "./nav-items";
+import { NavigationItem } from "./navigation-item";
 
-export const SideNavigation = ({ className }: { className?: string }) => {
+export const SideNavigation = ({ className, navigation }: { className?: string; navigation: NavigationItem[] }) => {
   const pathname = usePathname();
   return (
     <aside className={clsx("sticky mr-12 min-w-[150px] border-r border-[#251E35]", className)}>
@@ -15,7 +15,7 @@ export const SideNavigation = ({ className }: { className?: string }) => {
         <div className="mb-4 pl-2">
           <VimaIcon />
         </div>
-        {navigationItems.map(({ href, title }) => {
+        {navigation.map(({ href, title }) => {
           const isActive = pathname === href;
           return (
             <CustomLink

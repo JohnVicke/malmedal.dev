@@ -1,3 +1,6 @@
+import { internalNavigation } from "@/components/navigation/internal-nav-items";
+import { SideNavigation } from "@/components/navigation/side-navigation";
+
 export const metadata = {
   title: {
     default: "Internal",
@@ -17,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <body className="relative mx-4 mt-8 flex max-w-screen-xl antialiased">
+        <SideNavigation navigation={internalNavigation} />
         <main className="flex min-w-0 flex-auto flex-col gap-4 px-2 pb-12 md:mt-0 md:px-0">{children}</main>
       </body>
     </>

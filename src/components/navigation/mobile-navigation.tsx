@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { CustomLink } from "../custom-link";
 import { GithubIcon, LinkedInIcon, MailIcon } from "../icons";
-import { navigationItems } from "./nav-items";
+import { NavigationItem } from "./navigation-item";
 
-export const MobileNavigation = ({ className }: { className?: string }) => {
+export const MobileNavigation = ({ navigation, className }: { className?: string; navigation: NavigationItem[] }) => {
   const [open, setOpen] = React.useState(false);
   const toggleSideNav = () => setOpen(!open);
 
@@ -30,7 +30,7 @@ export const MobileNavigation = ({ className }: { className?: string }) => {
       </button>
       {open && (
         <div className="fixed bottom-0 left-0 flex flex-wrap bg-[#14121B] px-4 pb-12">
-          {navigationItems.map(({ href, title }) => {
+          {navigation.map(({ href, title }) => {
             const isActive = pathname === href;
             return (
               <Link

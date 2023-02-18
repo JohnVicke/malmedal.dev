@@ -1,4 +1,6 @@
-export const navigationItems = [
+import { NavigationItem } from "./navigation-item";
+
+export const navigationItems: NavigationItem[] = [
   {
     title: "Home",
     href: "/",
@@ -23,4 +25,4 @@ export const navigationItems = [
     title: "Guestbook",
     href: "/guestbook",
   },
-] as const;
+];
