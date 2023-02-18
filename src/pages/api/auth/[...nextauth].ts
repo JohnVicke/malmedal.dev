@@ -11,6 +11,7 @@ export const authOptions: NextAuthOptions = {
     session({ session, user }) {
       if (user) {
         session.user.id = user.id;
+        session.user.role = user.role;
       }
       return session;
     },
@@ -19,14 +20,16 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-      profile: (profile: GithubProfile): User => {
+      profile: (profile: GithubProfile) => {
         return {
+          emailVerified: null,
           name: profile.name,
           email: profile.email,
           id: profile.id.toString(),
           image: profile.avatar_url,
           htmlUrl: profile.html_url,
-        };
+          role: "USER",
+        } satisfies User;
       },
     }),
   ],
