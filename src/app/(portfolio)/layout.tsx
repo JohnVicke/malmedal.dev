@@ -26,7 +26,7 @@ export const metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <body className="relative mx-4 mt-4 flex max-w-screen-md antialiased md:mt-28 lg:mx-auto">
+      <body className="relative mx-4 mt-4 flex max-w-screen-lg antialiased md:mt-28 lg:mx-auto">
         <Navigation navigation={navigationItems} />
         <main className="flex min-w-0 flex-auto flex-col gap-4 px-2 pb-12 md:mt-0 md:px-0">{children}</main>
       </body>
