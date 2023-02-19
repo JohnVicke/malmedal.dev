@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { BlogPost } from "./preview-card";
+import { getPosts } from "../fetch-blog-posts";
 
 interface BlogPostProps {
   params: {
@@ -17,17 +17,6 @@ export default async function BlogPage({ params }: BlogPostProps) {
   }
 
   return <div>hjaskdf</div>;
-}
-
-const posts: BlogPost[] = [
-  { slug: "Telescope", createdAt: new Date(), title: "Telescope", estimatedRead: 4 },
-  { slug: "Neovim", createdAt: new Date(), title: "Telescope", estimatedRead: 4 },
-];
-
-function getPosts() {
-  return new Promise<typeof posts>(res => {
-    res(posts);
-  });
 }
 
 export async function generateStaticParams() {
