@@ -13,7 +13,9 @@ export const SideNavigation = ({ className, navigation }: { className?: string; 
     <aside className={clsx("sticky mr-12 min-w-[150px] border-r border-[#251E35]", className)}>
       <nav className="flex flex-col ">
         <div className="mb-4 pl-2">
-          <VimaIcon />
+          <CustomLink href="/">
+            <VimaIcon />
+          </CustomLink>
         </div>
         {navigation.map(({ href, title }) => {
           const isActive = pathname === href;
