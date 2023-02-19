@@ -14,14 +14,6 @@ export const navigationItems: NavigationItem[] = [
     href: "/blog",
   },
   {
-    title: "Projects",
-    href: "/projects",
-  },
-  {
-    title: "Tools",
-    href: "/tools",
-  },
-  {
     title: "Guestbook",
     href: "/guestbook",
   },
