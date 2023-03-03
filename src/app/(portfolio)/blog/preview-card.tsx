@@ -14,7 +14,7 @@ interface PreviewCardProps {
 export function PreviewCard({ post }: PreviewCardProps) {
   return (
     <CustomLink href={`/blog/${post.slug}`}>
-      <div className="group max-w-xs animate-border cursor-pointer rounded-md p-0.5 transition-all hover:-translate-y-2 hover:bg-[#251E35]">
+      <div className="group max-w-xs animate-border cursor-pointer rounded-md p-0.5 transition-all hover:-translate-y-1 hover:bg-[#251E35]">
         <img
           alt="image"
           className="rounded-t-md object-cover"
