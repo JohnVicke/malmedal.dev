@@ -1,0 +1,27 @@
+---
+import { RocketIcon } from "../icons/RocketIcon";
+import { GithubIcon } from "../icons/GithubIcon";
+import { HomeIcon } from "../icons/HomeIcon";
+import { ToggleColorTheme } from "./ToggleColorTheme";
+import NavItem from "./NavItem.astro";
+const { pathname } = Astro.url;
+---
+
+<div class="fixed top-0 backdrop-blur-md w-full py-2 flex justify-center">
+  <div class="px-4 w-full max-w-screen-md m-auto flex items-center justify-between">
+    <nav class="flex gap-x-2">
+      <NavItem href="/" active={pathname === "/"}>
+        <HomeIcon />
+         Home
+      </NavItem>
+      <a href="/projects" class="inline-flex items-center gap-x-2">
+      <NavItem href="/projects" active={pathname === "/projects"}>
+        <RocketIcon/>
+        Projects</NavItem>
+    </nav>
+    <div class="flex items-center gap-x-2">
+    <ToggleColorTheme client:only="react" />
+    <GithubIcon className="opacity-50 hover:opacity-100"/>
+    </div>
+  </div>
+</div>

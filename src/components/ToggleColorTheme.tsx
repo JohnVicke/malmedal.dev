@@ -1,8 +1,8 @@
+import { AnimatePresence, AnimationProps, motion } from "framer-motion";
 import React from "react";
+
 import { MoonIcon } from "../icons/MoonIcon";
 import { SunIcon } from "../icons/SunIcon";
-import { AnimatePresence, AnimationProps, motion } from "framer-motion";
-import { GodComponent, BaseIconProps } from "../icons/Icon";
 
 const getLocalTheme = () =>
   localStorage.getItem("darkMode") === "true" ? "dark" : "light";
@@ -13,7 +13,13 @@ const setLocalTheme = (dark: boolean) => {
   if (html) html.className = dark ? "light" : "dark";
 };
 
-const ToggleThemeComponent = ({ theme }: { theme: string }) => {
+const ToggleThemeComponent = ({
+  onClick,
+  theme,
+}: {
+  theme: string;
+  onClick: () => void;
+}) => {
   const anim: AnimationProps = {
     initial: {
       rotateX: "0deg",
@@ -29,13 +35,13 @@ const ToggleThemeComponent = ({ theme }: { theme: string }) => {
   return (
     <AnimatePresence>
       {theme === "dark" ? (
-        <motion.div {...anim} key="sun-icon">
-          <SunIcon color="fill-neutral-500 dark:fill-neutral-300" />
-        </motion.div>
+        <motion.button {...anim} key="sun-icon" onClick={onClick}>
+          <SunIcon color="dark:fill-yellow-200" />
+        </motion.button>
       ) : (
-        <motion.div {...anim} key="moon-icon">
-          <MoonIcon color="fill-neutral-500 dark:fill-neutral-300" />
-        </motion.div>
+        <motion.button {...anim} key="moon-icon" onClick={onClick}>
+          <MoonIcon color="fill-blue-950" />
+        </motion.button>
       )}
     </AnimatePresence>
   );
@@ -51,13 +57,5 @@ export const ToggleColorTheme = () => {
     setTheme(localTheme === "dark" ? "light" : "dark");
   };
 
-  return (
-    <GodComponent
-      onClick={handleClick}
-      isActive={false}
-      initial={true}
-      tooltip={tooltip}
-      component={<ToggleThemeComponent theme={theme} />}
-    />
-  );
+  return <ToggleThemeComponent theme={theme} onClick={handleClick} />;
 };

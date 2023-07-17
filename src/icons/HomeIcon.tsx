@@ -1,17 +1,15 @@
 import React from "react";
-import { GodComponent, BaseIconProps } from "./Icon";
 
-export const HomeSvg = ({ color }: { color: string }) => (
+export const HomeIcon = () => (
   <svg
-    width="32"
-    height="32"
+    className="h-6 w-6"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <g id="24 / basic / home">
       <path
-        className={color}
+        className="fill-neutral-700 dark:fill-neutral-300"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"
@@ -20,8 +18,4 @@ export const HomeSvg = ({ color }: { color: string }) => (
       />
     </g>
   </svg>
-);
-
-export const HomeIcon = (props: BaseIconProps) => (
-  <GodComponent {...props} Icon={HomeSvg} />
 );

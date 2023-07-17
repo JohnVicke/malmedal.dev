@@ -1,0 +1,19 @@
+---
+import { cn } from "../utils/cn";
+
+interface Props {
+  active?: boolean;
+  href: string;
+}
+
+const { href, active } = Astro.props;
+---
+
+<a
+  class={cn(
+    "inline-flex items-center gap-x-2 opacity-50 hover:opacity-100 transition-opacity duration-200 relative ease-in-out",
+    "text-neutral-700 dark:text-neutral-300 leading-7",
+    active && "opacity-100",
+  )}
+  href={href}><slot /></a
+>

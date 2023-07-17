@@ -1,3 +1,5 @@
+import React from "react";
+
 export const SunIcon = ({ color }: { color: string }) => (
   <svg
     width="32"

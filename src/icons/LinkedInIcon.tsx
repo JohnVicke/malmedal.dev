@@ -1,7 +1,6 @@
 import React from "react";
-import { GodComponent, BaseIconProps } from "./Icon";
 
-export const LinkedInSvg = ({ color }: { color: string }) => (
+export const LinkedInIcon = ({ color }: { color: string }) => (
   <svg
     width="32"
     height="32"
@@ -20,8 +19,4 @@ export const LinkedInSvg = ({ color }: { color: string }) => (
       />
     </g>
   </svg>
-);
-
-export const LinkedInIcon = (props: BaseIconProps) => (
-  <GodComponent {...props} Icon={LinkedInSvg} />
 );

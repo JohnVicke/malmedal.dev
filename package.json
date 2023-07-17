@@ -7,20 +7,27 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json,astro}\" --ignore-path .gitignore"
   },
   "devDependencies": {
     "@astrojs/react": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
     "@types/react": "^18.0.17",
     "astro": "^1.0.8",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@fontsource/fira-code": "^4.5.11",
     "@types/uuid": "^8.3.4",
+    "clsx": "^2.0.0",
     "framer-motion": "^7.2.1",
+    "tailwind-merge": "^1.14.0",
     "uuid": "^8.3.2"
   }
 }

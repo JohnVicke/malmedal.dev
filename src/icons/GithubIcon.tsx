@@ -1,8 +1,8 @@
 import React from "react";
-import { GodComponent, BaseIconProps } from "./Icon";
 
-export const GithubSvg = ({ color }: { color: string }) => (
+export const GithubIcon = ({ className }: { className?: string }) => (
   <svg
+    className={className}
     width="32"
     height="32"
     viewBox="0 0 24 24"
@@ -11,7 +11,7 @@ export const GithubSvg = ({ color }: { color: string }) => (
   >
     <g id="24 / symbols / github">
       <path
-        className={color}
+        className="fill-neutral-700 dark:fill-neutral-300"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"
@@ -20,8 +20,4 @@ export const GithubSvg = ({ color }: { color: string }) => (
       />
     </g>
   </svg>
-);
-
-export const GithubIcon = (props: BaseIconProps) => (
-  <GodComponent {...props} Icon={GithubSvg} />
 );

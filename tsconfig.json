@@ -8,6 +8,10 @@
     "noEmit": true,
     "strict": true,
     "importsNotUsedAsValues": "error",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }

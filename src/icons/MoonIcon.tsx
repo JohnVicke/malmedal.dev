@@ -1,3 +1,5 @@
+import React from "react";
+
 export const MoonIcon = ({ color }: { color: string }) => (
   <svg
     width="32"

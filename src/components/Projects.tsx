@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { v4 } from "uuid";
-import { BrowserSvg } from "../icons/BrowserIcon";
-import { GithubSvg } from "../icons/GithubIcon";
+
+import { BrowserIcon } from "../icons/BrowserIcon";
+import { GithubIcon } from "../icons/GithubIcon";
 
 type Project = {
   id: string;
@@ -18,17 +19,25 @@ const projects: Project[] = [
   {
     id: v4(),
     website: {
-      label: "Napa vercel app",
-      href: "https://time-keeper-rose.vercel.app/",
+      label: "Kodverk",
+      href: "https://docs.kodverk.se/",
     },
     github: {
       label: "Github napa",
-      href: "https://github.com/JohnVicke/napa",
+      href: "https://github.com/kodverk",
     },
-    tech: ["NextJS", "TypeScript", "tRPC", "tailwind", "Prisma", "PostgresQL"],
-    title: "Not another productivity app",
-    year: 2022,
-    description: `Not another productivity app (napa) is a full-stack project that allows users to "clock" their time at work. Users can track the number of hours worked, how much is in the "flex account" and get an overview of what you spend most of your time on. Napa also integrates with Google Tasks, allowing users to save, create and stamp their tasks throughout the day.`,
+    tech: [
+      "Next",
+      "TypeScript",
+      "tailwind",
+      "Vercel",
+      "Cloudflare",
+      "Netlify",
+      "Mdx",
+    ],
+    title: "Kodverk",
+    year: 2023,
+    description: `I founded Kodverk together with my friend to simplify API integration and provide a user-friendly, type-safe solution. We noticed the lack of such tools during our university studies and wanted to empower developers to focus on their projects without the complexities of data retrieval. Kodverk offers clear documentation, SDKs, and supports hackathon enthusiasts, indie developers, startups, and students in various disciplines.`,
   },
   {
     id: v4(),
@@ -104,36 +113,36 @@ const ProjectIcon = ({
 };
 
 const Project = ({ project }: ProjectProps) => {
-  const { website, title, tech, year, description, id, github } = project;
+  const { website, title, tech, year, description, github } = project;
 
   return (
     <div className="flex flex-col gap-4 rounded-lg p-4">
-      <div className="text-neutral-800 dark:text-neutral-200 flex justify-between gap-4 items-center">
+      <div className="flex items-center justify-between gap-4 text-neutral-800 dark:text-neutral-200">
         <h2 className=" font-bold">{title}</h2>
         <span className="flex-1 border-b border-neutral-300 dark:border-neutral-700"></span>
         <h2 className="font-bold">{year}</h2>
       </div>
-      <div className="text-neutral-700 dark:text-neutral-300 flex w-full flex-col">
-        <div className="flex flex-col sm:flex-row gap-2">
+      <div className="flex w-full flex-col text-neutral-700 dark:text-neutral-300">
+        <div className="flex flex-col gap-2 sm:flex-row">
           <div className="flex-1 flex-wrap">
             <p>{description}</p>
           </div>
-          <div className="gap-2 flex flex-row sm:flex-col">
+          <div className="flex flex-row gap-2 sm:flex-col">
             <ProjectIcon
               label={github.label}
-              icon={GithubSvg}
+              icon={GithubIcon}
               href={github.href}
             />
             {website && (
               <ProjectIcon
                 label={website.label}
-                icon={BrowserSvg}
+                icon={BrowserIcon}
                 href={website.href}
               />
             )}
           </div>
         </div>
-        <div className="flex gap-2 mt-4 flex-wrap items-center">
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           {tech.map((t) => (
             <div key={`id-${t}`} className="text-xs ">
               <p>{t}</p>
