@@ -16,9 +16,11 @@ const setLocalTheme = (dark: boolean) => {
 const ToggleThemeComponent = ({
   onClick,
   theme,
+  tooltip,
 }: {
   theme: string;
   onClick: () => void;
+  tooltip: string;
 }) => {
   const anim: AnimationProps = {
     initial: {
@@ -36,10 +38,12 @@ const ToggleThemeComponent = ({
     <AnimatePresence>
       {theme === "dark" ? (
         <motion.button {...anim} key="sun-icon" onClick={onClick}>
+          <div className="sr-only">{`toggle-${tooltip}`}</div>
           <SunIcon color="dark:fill-yellow-200" />
         </motion.button>
       ) : (
         <motion.button {...anim} key="moon-icon" onClick={onClick}>
+          <div className="sr-only">{`toggle-${tooltip}`}</div>
           <MoonIcon color="fill-blue-950" />
         </motion.button>
       )}
@@ -57,5 +61,11 @@ export const ToggleColorTheme = () => {
     setTheme(localTheme === "dark" ? "light" : "dark");
   };
 
-  return <ToggleThemeComponent theme={theme} onClick={handleClick} />;
+  return (
+    <ToggleThemeComponent
+      theme={theme}
+      onClick={handleClick}
+      tooltip={tooltip}
+    />
+  );
 };
