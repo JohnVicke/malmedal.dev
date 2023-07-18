@@ -9,7 +9,7 @@ export const RocketIcon = () => (
   >
     <g id="24 / various / rocket">
       <path
-        className="fill-neutral-700 dark:fill-neutral-300"
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

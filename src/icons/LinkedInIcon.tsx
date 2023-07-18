@@ -1,6 +1,6 @@
 import React from "react";
 
-export const LinkedInIcon = ({ color }: { color: string }) => (
+export const LinkedInIcon = () => (
   <svg
     width="32"
     height="32"
@@ -10,7 +10,7 @@ export const LinkedInIcon = ({ color }: { color: string }) => (
   >
     <g id="24 / symbols / linkedin">
       <path
-        className={color}
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

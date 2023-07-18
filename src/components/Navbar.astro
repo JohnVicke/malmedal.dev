@@ -4,6 +4,7 @@ import { GithubIcon } from "../icons/GithubIcon";
 import { HomeIcon } from "../icons/HomeIcon";
 import { ToggleColorTheme } from "./ToggleColorTheme";
 import NavItem from "./NavItem.astro";
+import { LinkedInIcon } from "@/icons/LinkedInIcon";
 const { pathname } = Astro.url;
 ---
 
@@ -20,7 +21,15 @@ const { pathname } = Astro.url;
     </nav>
     <div class="flex items-center gap-x-2">
     <ToggleColorTheme client:only="react" />
-    <GithubIcon className="opacity-50 hover:opacity-100"/>
+
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/johnvicke" class="group relative opacity-50 hover:opacity-100">
+    <GithubIcon />
+  <span class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"></span>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/viktor-malmedal" class="group relative opacity-50 hover:opacity-100">
+    <LinkedInIcon />
+  <span class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"></span>
+    </a>
     </div>
   </div>
 </div>

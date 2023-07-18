@@ -2,6 +2,7 @@
 import "@fontsource/fira-code";
 
 import Navbar from "../components/Navbar.astro";
+import "@/styles/base.css"
 
 export interface Props {
   title: string;
@@ -9,8 +10,7 @@ export interface Props {
   disableNav?: boolean;
 }
 
-const vercelUrl = import.meta.env.VERCEL_URL;
-const { title, href, disableNav } = Astro.props as Props;
+const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -35,20 +35,12 @@ const { title, href, disableNav } = Astro.props as Props;
   <title>{title}</title>
 
   <body
-    class="bg-neutral-200 dark:bg-neutral-800 h-screen w-screen text-slate-100 overflow-x-hidden"
+    class="h-screen w-screen overflow-x-hidden"
   >
     <Navbar />
-    <main class="flex flex-col max-w-screen-md m-auto p-4 pt-8 md:pt-24">
+    <main class="flex flex-col max-w-screen-md m-auto p-4 pt-20 md:pt-24">
       <slot class="flex-1" />
       <div class="h-28"></div>
     </main>
-    <style is:global>
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-      body {
-        font-family: "Fira Code", monospace;
-      }
-    </style>
   </body>
 </html>

@@ -117,12 +117,12 @@ const Project = ({ project }: ProjectProps) => {
 
   return (
     <div className="flex flex-col gap-4 rounded-lg p-4">
-      <div className="flex items-center justify-between gap-4 text-neutral-800 dark:text-neutral-200">
+      <div className="flex items-center justify-between gap-4">
         <h2 className=" font-bold">{title}</h2>
         <span className="flex-1 border-b border-neutral-300 dark:border-neutral-700"></span>
         <h2 className="font-bold">{year}</h2>
       </div>
-      <div className="flex w-full flex-col text-neutral-700 dark:text-neutral-300">
+      <div className="flex w-full flex-col ">
         <div className="flex flex-col gap-2 sm:flex-row">
           <div className="flex-1 flex-wrap">
             <p>{description}</p>

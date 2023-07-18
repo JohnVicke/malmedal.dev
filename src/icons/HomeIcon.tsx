@@ -9,7 +9,7 @@ export const HomeIcon = () => (
   >
     <g id="24 / basic / home">
       <path
-        className="fill-neutral-700 dark:fill-neutral-300"
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

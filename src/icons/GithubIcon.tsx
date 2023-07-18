@@ -11,7 +11,7 @@ export const GithubIcon = ({ className }: { className?: string }) => (
   >
     <g id="24 / symbols / github">
       <path
-        className="fill-neutral-700 dark:fill-neutral-300"
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

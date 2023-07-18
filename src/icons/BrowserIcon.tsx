@@ -10,7 +10,7 @@ export const BrowserIcon = ({ color }: { color: string }) => (
   >
     <g id="24 / basic / browser">
       <path
-        className={color}
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

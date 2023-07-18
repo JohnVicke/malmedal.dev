@@ -7,9 +7,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "strict": true,
-    "importsNotUsedAsValues": "error",
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }

@@ -25,8 +25,10 @@ const ToggleThemeComponent = ({
   const anim: AnimationProps = {
     initial: {
       rotateX: "0deg",
+      opacity: 0,
     },
     animate: {
+      opacity: 100,
       rotateY: "180deg",
     },
     transition: {
@@ -35,7 +37,7 @@ const ToggleThemeComponent = ({
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false} mode="wait">
       {theme === "dark" ? (
         <motion.button {...anim} key="sun-icon" onClick={onClick}>
           <div className="sr-only">{`toggle-${tooltip}`}</div>
@@ -44,7 +46,7 @@ const ToggleThemeComponent = ({
       ) : (
         <motion.button {...anim} key="moon-icon" onClick={onClick}>
           <div className="sr-only">{`toggle-${tooltip}`}</div>
-          <MoonIcon color="fill-blue-950" />
+          <MoonIcon color="fill-blue-200" />
         </motion.button>
       )}
     </AnimatePresence>
