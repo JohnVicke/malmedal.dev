@@ -37,7 +37,7 @@ const ToggleThemeComponent = ({
   };
 
   return (
-    <AnimatePresence initial={false} mode="wait">
+    <AnimatePresence initial={false}>
       {theme === "dark" ? (
         <motion.button {...anim} key="sun-icon" onClick={onClick}>
           <div className="sr-only">{`toggle-${tooltip}`}</div>

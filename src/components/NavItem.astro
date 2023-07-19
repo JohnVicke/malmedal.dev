@@ -9,15 +9,17 @@ interface Props {
 const { href, active } = Astro.props;
 ---
 
-<a class={cn(
+<a
+  class={cn(
     "group inline-flex items-center gap-x-2 opacity-80 hover:opacity-100 transition-opacity duration-200 relative ease-in-out",
     active && "opacity-100 font-sembold",
   )}
-  href={href}>
-  <slot />
-  <span class={cn(
-  "absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground", 
-  active && "w-full"
-  )}></span>
-  </a
+  href={href}
 >
+  <slot />
+  <span
+    class={cn(
+      "absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground",
+      active && "w-full",
+    )}></span>
+</a>

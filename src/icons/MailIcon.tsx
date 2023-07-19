@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MailIcon = ({ color }: { color: string }) => (
+export const MailIcon = () => (
   <svg
     width="32"
     height="32"
@@ -10,7 +10,7 @@ export const MailIcon = ({ color }: { color: string }) => (
   >
     <g id="24 / basic / mail">
       <path
-        className={color}
+        className="fill-foreground"
         id="icon"
         fillRule="evenodd"
         clipRule="evenodd"

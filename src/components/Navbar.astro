@@ -1,35 +1,29 @@
 ---
-import { RocketIcon } from "../icons/RocketIcon";
+import { LinkedInIcon } from "@/icons/LinkedInIcon";
+
 import { GithubIcon } from "../icons/GithubIcon";
 import { HomeIcon } from "../icons/HomeIcon";
-import { ToggleColorTheme } from "./ToggleColorTheme";
+import { RocketIcon } from "../icons/RocketIcon";
 import NavItem from "./NavItem.astro";
-import { LinkedInIcon } from "@/icons/LinkedInIcon";
+import { ToggleColorTheme } from "./ToggleColorTheme";
+
 const { pathname } = Astro.url;
 ---
 
 <div class="fixed top-0 backdrop-blur-md w-full py-2 flex justify-center">
-  <div class="px-4 w-full max-w-screen-md m-auto flex items-center justify-between">
-    <nav class="flex gap-x-2">
+  <div
+    class="px-4 w-full max-w-screen-md m-auto flex items-center justify-between"
+  >
+    <nav class="flex gap-x-8">
       <NavItem href="/" active={pathname === "/"}>
         <HomeIcon />
          Home
       </NavItem>
       <NavItem href="/projects" active={pathname === "/projects"}>
-        <RocketIcon/>
-        Projects</NavItem>
+        <RocketIcon />
+         Projects
+      </NavItem>
     </nav>
-    <div class="flex items-center gap-x-2">
     <ToggleColorTheme client:only="react" />
-
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/johnvicke" class="group relative opacity-50 hover:opacity-100">
-    <GithubIcon />
-  <span class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"></span>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/viktor-malmedal" class="group relative opacity-50 hover:opacity-100">
-    <LinkedInIcon />
-  <span class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"></span>
-    </a>
-    </div>
   </div>
 </div>
