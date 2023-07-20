@@ -1,11 +1,11 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-/** @type {import('rehype-pretty-code').Options} */
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/edge";
 import { defineConfig } from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
 
+/** @type {import('rehype-pretty-code').Options} */
 const prettyCodeOptions = {
   theme: {
     dark: "github-dark-dimmed",
