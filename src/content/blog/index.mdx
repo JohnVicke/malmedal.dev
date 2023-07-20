@@ -6,19 +6,31 @@ draft: true
 ---
 
 import Link from "../../components/Link";
-import Code from "../../components/mdx/Code";
 import { createHeader } from "../../components/mdx/createHeader";
 import Li from "../../components/mdx/Li";
 import Ul from "../../components/mdx/Ul";
+import Code from "../../components/mdx/Code";
 
 export const components = {
   a: Link,
-  code: Code,
   h1: createHeader("h1"),
   h2: createHeader("h2"),
   h3: createHeader("h3"),
   li: Li,
   ul: Ul,
+  pre: Code
 };
 
 In Progress...
+
+# Heading 1
+## Heading 2
+### Heading 3
+
+[a link](http://google.com)
+
+
+```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /'Taylor'/#i
+const [age, setAge] = useState(50);
+const [name, setName] = useState('Taylor');
+```
