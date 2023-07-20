@@ -28,7 +28,7 @@ const blog = defineCollection({
 });
 
 const project = defineCollection({
-  type: "content",
+  type: "data",
   schema: projectSchema,
 });
 
