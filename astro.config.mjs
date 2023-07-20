@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/edge";
+import vercel from "@astrojs/vercel/static";
 import { defineConfig } from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
 
@@ -50,7 +50,7 @@ export default defineConfig({
       external: ["svgo"],
     },
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     analytics: true,
   }),
