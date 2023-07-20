@@ -1,5 +1,9 @@
 {
   "name": "@example/basics",
+  "packageManager": "pnpm@8.5.0",
+  "engines": {
+    "node": "^18"
+  },
   "version": "0.0.1",
   "private": true,
   "scripts": {
