@@ -1,4 +1,5 @@
 ---
+
 import { Icons } from "@/components/Icons";
 
 import NavItem from "./NavItem.astro";
@@ -6,6 +7,7 @@ import { ToggleColorTheme } from "./ToggleColorTheme";
 
 const { pathname } = Astro.url;
 const isBlog = pathname.includes("/blog/") || pathname === "/blog";
+
 ---
 
 <div class="fixed top-0 z-50 backdrop-blur-md w-full py-2 flex justify-center">
@@ -18,7 +20,7 @@ const isBlog = pathname.includes("/blog/") || pathname === "/blog";
          Home
       </NavItem>
       <NavItem href="/projects" active={pathname === "/projects"}>
-        <Icons.rocket />
+        <Icons.rocket className="sm:block hidden" />
          Projects
       </NavItem>
       <NavItem href="/blog" active={isBlog}>
@@ -26,6 +28,6 @@ const isBlog = pathname.includes("/blog/") || pathname === "/blog";
          Blog
       </NavItem>
     </nav>
-    <ToggleColorTheme client:only="react" />
+    <ToggleColorTheme client:visible />
   </div>
 </div>
