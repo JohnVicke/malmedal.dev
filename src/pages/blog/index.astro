@@ -6,7 +6,6 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog");
-console.log(posts);
 
 const sortedPosts = posts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -24,7 +23,7 @@ const title = "viktor • blog";
         <Text>Curious about the progress?</Text>
         <Link
           className="mt-8 w-fit relative p-4 flex flex-col  gap-y-4 cursor-pointer outline transition-all hover:-translate-x-1 hover:outline-foreground outline-foreground/20 rounded-md"
-          href="https://github.com/JohnVicke/astro-portfolio"
+          href="https://github.com/JohnVicke/malmedal.dev"
         >
           &nearr; View source on GitHub{" "}
         </Link>
