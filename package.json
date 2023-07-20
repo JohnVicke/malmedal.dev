@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
+    "@astrojs/vercel": "^3.7.3",
     "@fontsource/fira-code": "^5.0.5",
     "@types/uuid": "^9.0.2",
     "class-variance-authority": "^0.7.0",
