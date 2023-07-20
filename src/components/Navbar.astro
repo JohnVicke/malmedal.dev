@@ -1,10 +1,6 @@
 ---
-import { LinkedInIcon } from "@/icons/LinkedInIcon";
 
-import { BlogIcon } from "../icons/BlogIcon";
-import { GithubIcon } from "../icons/GithubIcon";
-import { HomeIcon } from "../icons/HomeIcon";
-import { RocketIcon } from "../icons/RocketIcon";
+import {Icons} from "@/components/Icons";
 import NavItem from "./NavItem.astro";
 import { ToggleColorTheme } from "./ToggleColorTheme";
 
@@ -18,15 +14,15 @@ const isBlog = pathname.includes("/blog/") || pathname === "/blog";
   >
     <nav class="flex gap-x-8">
       <NavItem href="/" active={pathname === "/"}>
-        <HomeIcon className="sm:block hidden" />
+        <Icons.home className="sm:block hidden" />
          Home
       </NavItem>
       <NavItem href="/projects" active={pathname === "/projects"}>
-        <RocketIcon className="sm:block hidden" />
+        <Icons.rocket />
          Projects
       </NavItem>
       <NavItem href="/blog" active={isBlog}>
-        <BlogIcon className="sm:block hidden" />
+        <Icons.blog className="sm:block hidden" />
          Blog
       </NavItem>
     </nav>

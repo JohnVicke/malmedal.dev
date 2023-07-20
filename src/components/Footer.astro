@@ -1,14 +1,5 @@
 ---
-import { LinkedInIcon } from "@/icons/LinkedInIcon";
-
-import { GithubIcon } from "../icons/GithubIcon";
-import { HomeIcon } from "../icons/HomeIcon";
-import { MailIcon } from "../icons/MailIcon";
-import { RocketIcon } from "../icons/RocketIcon";
-import NavItem from "./NavItem.astro";
-import { ToggleColorTheme } from "./ToggleColorTheme";
-
-const { pathname } = Astro.url;
+import {Icons} from "@/components/Icons";
 ---
 
 <div class="w-full py-4 px-4">
@@ -23,7 +14,7 @@ const { pathname } = Astro.url;
         href="mailto:viktor@malmedal.dev"
         class="group relative opacity-50 hover:opacity-100"
       >
-        <MailIcon />
+        <Icons.mail />
         <span class="sr-only">Mail</span>
         <span
           class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"
@@ -35,7 +26,7 @@ const { pathname } = Astro.url;
         href="https://github.com/johnvicke"
         class="group relative opacity-50 hover:opacity-100"
       >
-        <GithubIcon />
+        <Icons.github />
         <span class="sr-only">Github</span>
         <span
           class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"
@@ -48,7 +39,7 @@ const { pathname } = Astro.url;
         class="group relative opacity-50 hover:opacity-100"
       >
         <span class="sr-only">LinkedIn</span>
-        <LinkedInIcon />
+        <Icons.linkedIn />
         <span
           class="absolute -bottom-2 block w-0 group-hover:w-full transition-all duration-500 h-px bg-foreground"
         ></span>
