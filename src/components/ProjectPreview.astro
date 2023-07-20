@@ -6,13 +6,11 @@ import { GithubIcon } from "@/icons/GithubIcon";
 import Text from "./Text";
 
 export interface Props {
-  project: Project & {
-    slug: string;
-  };
+  project: Project 
 }
 
 const {
-  project: { description, slug, tech, title, year, github, website },
+  project: { description, tech, title, year, github, website },
 } = Astro.props as Props;
 ---
 

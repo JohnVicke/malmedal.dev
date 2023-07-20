@@ -1,4 +1,4 @@
-import { AnimatePresence, AnimationProps, motion } from "framer-motion";
+import { cn } from "@/utils/cn";
 import React from "react";
 
 import { MoonIcon } from "../icons/MoonIcon";
@@ -22,34 +22,28 @@ const ToggleThemeComponent = ({
   onClick: () => void;
   tooltip: string;
 }) => {
-  const anim: AnimationProps = {
-    initial: {
-      rotateX: "0deg",
-      opacity: 0,
-    },
-    animate: {
-      opacity: 100,
-      rotateY: "180deg",
-    },
-    transition: {
-      type: "spring",
-    },
-  };
-
   return (
-    <AnimatePresence initial={false}>
-      {theme === "dark" ? (
-        <motion.button {...anim} key="sun-icon" onClick={onClick}>
+    <>
+      {theme !== "dark" ? (
+        <button
+          className="group rounded-md bg-foreground/20 p-1 hover:bg-foreground/30"
+          key="sun-icon"
+          onClick={onClick}
+        >
           <div className="sr-only">{`toggle-${tooltip}`}</div>
-          <SunIcon color="dark:fill-yellow-200" />
-        </motion.button>
+          <SunIcon className="fill-foreground transition-colors group-hover:fill-yellow-200" />
+        </button>
       ) : (
-        <motion.button {...anim} key="moon-icon" onClick={onClick}>
+        <button
+          key="moon-icon"
+          onClick={onClick}
+          className="group rounded-md bg-foreground/10 p-1 transition-colors hover:bg-foreground/5"
+        >
           <div className="sr-only">{`toggle-${tooltip}`}</div>
-          <MoonIcon color="fill-blue-200" />
-        </motion.button>
+          <MoonIcon className="fill-foreground transition-colors group-hover:fill-blue-900" />
+        </button>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 
