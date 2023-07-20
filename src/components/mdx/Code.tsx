@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 
-import "@/styles/code.css";
+export type CodeblockProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLPreElement>,
+  HTMLPreElement
+> & {
+  /** set by `rehype-pretty-code` */
+  "data-language"?: string;
+  /** set by `rehype-pretty-code` */
+  "data-theme"?: string;
+};
 
-export default function Code({ children }: React.PropsWithChildren) {
+export default function Code(props: CodeblockProps) {
+  const { children, ...rest } = props;
+
+  const ref = useRef<HTMLPreElement>(null);
+
   return (
-    <code className="after:(font-black dark:text-gray-600) before:(font-black dark:text-gray-600) rounded text-sm text-gray-400 text-gray-400 [letter-spacing:-0.02em]">
+    <pre
+      ref={ref}
+      className="relative my-4 overflow-x-auto rounded-lg border border-foreground/20 bg-background p-4 font-mono text-sm font-semibold"
+      {...rest}
+    >
       {children}
-    </code>
+    </pre>
   );
 }
