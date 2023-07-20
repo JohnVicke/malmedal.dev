@@ -13,6 +13,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json,astro}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json,astro}\" --ignore-path .gitignore",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
