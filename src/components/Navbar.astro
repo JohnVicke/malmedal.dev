@@ -18,15 +18,15 @@ const isBlog = pathname.includes("/blog/") || pathname === "/blog";
   >
     <nav class="flex gap-x-8">
       <NavItem href="/" active={pathname === "/"}>
-        <HomeIcon className="md:hidden block" />
+        <HomeIcon className="sm:block hidden" />
          Home
       </NavItem>
       <NavItem href="/projects" active={pathname === "/projects"}>
-        <RocketIcon />
+        <RocketIcon className="sm:block hidden" />
          Projects
       </NavItem>
       <NavItem href="/blog" active={isBlog}>
-        <BlogIcon />
+        <BlogIcon className="sm:block hidden" />
          Blog
       </NavItem>
     </nav>

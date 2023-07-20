@@ -1,8 +1,9 @@
+import { cn } from "@/utils/cn";
 import React from "react";
 
-export const HomeIcon = () => (
+export const HomeIcon = ({ className }: { className?: string }) => (
   <svg
-    className="h-4 w-4"
+    className={cn("h-4 w-4", className)}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
