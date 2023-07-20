@@ -1,64 +1,46 @@
 import React from "react";
 import { Icons } from "@/components/Icons";
 
-const getLocalTheme = () =>
-  localStorage.getItem("darkMode") === "true" ? "dark" : "light";
-
-const setLocalTheme = (dark: boolean) => {
-  localStorage.setItem("darkMode", dark ? "false" : "true");
+const setLocalTheme = (theme: "dark" | "light") => {
+  console.log("setting theme", theme);
+  localStorage.setItem("theme", theme);
   const html = document.querySelector("html");
-  if (html) html.className = dark ? "light" : "dark";
+  if (html) html.className = theme;
 };
 
-const ToggleThemeComponent = ({
-  onClick,
-  theme,
-  tooltip,
-}: {
-  theme: string;
-  onClick: () => void;
-  tooltip: string;
-}) => {
+const ToggleThemeComponent = ({ onClick }: { onClick: () => void }) => {
   return (
     <>
-      {theme !== "dark" ? (
-        <button
-          className="rounded-md bg-foreground/5 p-1 text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
-          key="sun-icon"
-          onClick={onClick}
-        >
-          <div className="sr-only">{`toggle-${tooltip}`}</div>
-          <Icons.sun />
-        </button>
-      ) : (
-        <button
-          key="moon-icon"
-          onClick={onClick}
-          className="rounded-md bg-foreground/5 p-1 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
-        >
-          <div className="sr-only">{`toggle-${tooltip}`}</div>
-          <Icons.moon />
-        </button>
-      )}
+      <button
+        key="moon-icon"
+        onClick={onClick}
+        className="relative rounded-md bg-foreground/5 p-1 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+      >
+        <div className="sr-only">Toogle Theme</div>
+        <Icons.moon className="dark:hidden" />
+        <Icons.sun className="hidden dark:block" />
+      </button>
     </>
   );
 };
 
-export const ToggleColorTheme = () => {
-  const [theme, setTheme] = React.useState(getLocalTheme());
-  const tooltip = theme === "dark" ? "Light" : "Dark";
+const getLocalTheme = () => {
+  const theme = localStorage.getItem("theme");
+  if (!theme) {
+    return null;
+  }
+  if (theme !== "light" && theme !== "dark") {
+    return null;
+  }
+  return theme as "light" | "dark";
+};
 
+export const ToggleColorTheme = () => {
   const handleClick = () => {
-    const localTheme = getLocalTheme();
-    setLocalTheme(localTheme === "dark");
-    setTheme(localTheme === "dark" ? "light" : "dark");
+    const theme = getLocalTheme();
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setLocalTheme(newTheme);
   };
 
-  return (
-    <ToggleThemeComponent
-      theme={theme}
-      onClick={handleClick}
-      tooltip={tooltip}
-    />
-  );
+  return <ToggleThemeComponent onClick={handleClick} />;
 };
