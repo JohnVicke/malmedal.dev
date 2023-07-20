@@ -12,11 +12,11 @@
   },
   "tech": [
     "Next",
+    "Node",
     "TypeScript",
     "Tailwind",
     "Vercel",
     "Cloudflare",
-    "Netlify",
-    "mdx"
+    "Netlify"
   ]
 }
