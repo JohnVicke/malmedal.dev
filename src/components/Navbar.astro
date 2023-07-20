@@ -1,6 +1,7 @@
 ---
 import { LinkedInIcon } from "@/icons/LinkedInIcon";
 
+import { BlogIcon } from "../icons/BlogIcon";
 import { GithubIcon } from "../icons/GithubIcon";
 import { HomeIcon } from "../icons/HomeIcon";
 import { RocketIcon } from "../icons/RocketIcon";
@@ -8,6 +9,7 @@ import NavItem from "./NavItem.astro";
 import { ToggleColorTheme } from "./ToggleColorTheme";
 
 const { pathname } = Astro.url;
+const isBlog = pathname.includes("/blog/") || pathname === "/blog";
 ---
 
 <div class="fixed top-0 backdrop-blur-md w-full py-2 flex justify-center">
@@ -16,12 +18,16 @@ const { pathname } = Astro.url;
   >
     <nav class="flex gap-x-8">
       <NavItem href="/" active={pathname === "/"}>
-        <HomeIcon />
+        <HomeIcon className="md:hidden block" />
          Home
       </NavItem>
       <NavItem href="/projects" active={pathname === "/projects"}>
         <RocketIcon />
          Projects
+      </NavItem>
+      <NavItem href="/blog" active={isBlog}>
+        <BlogIcon />
+         Blog
       </NavItem>
     </nav>
     <ToggleColorTheme client:only="react" />

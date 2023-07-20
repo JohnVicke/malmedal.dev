@@ -107,7 +107,7 @@ const ProjectIcon = ({
   label,
   href,
 }: {
-  icon: ({ color }: { color: string }) => JSX.Element;
+  icon: () => JSX.Element;
   label: string;
   href: string;
 }) => {
@@ -124,13 +124,7 @@ const ProjectIcon = ({
         transition: { type: "spring", damping: 5 },
       }}
     >
-      <Icon
-        color={
-          hover
-            ? "fill-neutral-700 dark:fill-neutral-300"
-            : "fill-neutral-500 dark:fill-neutral-400"
-        }
-      />
+      <Icon />
     </motion.a>
   );
 };
@@ -139,14 +133,14 @@ const Project = ({ project }: ProjectProps) => {
   const { website, title, tech, year, description, github } = project;
 
   return (
-    <div className="flex flex-col gap-4 rounded-lg p-4">
+    <div className="flex flex-col gap-8 rounded-lg p-4">
       <div className="flex items-center justify-between gap-4">
         <h2 className=" font-bold">{title}</h2>
-        <span className="flex-1 border-b border-neutral-300 dark:border-neutral-700"></span>
-        <h2 className="font-bold">{year}</h2>
+        <span className="flex-1 border-b border-foreground/20"></span>
+        <time>{year}</time>
       </div>
       <div className="flex w-full flex-col ">
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
           <div className="flex-1 flex-wrap">
             <p>{description}</p>
           </div>
@@ -179,7 +173,7 @@ const Project = ({ project }: ProjectProps) => {
 
 export const Projects = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       {projects.map((project, i) => (
         <motion.div key={project.id}>
           <Project project={project} />

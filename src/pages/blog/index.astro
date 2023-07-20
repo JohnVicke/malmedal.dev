@@ -1,0 +1,46 @@
+---
+import Link from "@/components/Link";
+import PostPreview from "@/components/PostPreview.astro";
+import Text from "@/components/Text";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+console.log(posts);
+
+const sortedPosts = posts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .filter((post) => !post.data.draft);
+
+const title = "viktor • blog";
+---
+
+<MainLayout title={title}>
+  <Text level="h1">Blog</Text>
+  {
+    sortedPosts.length === 0 && (
+      <div class="flex flex-col">
+        <Text>My blog is currently under construction 🚧</Text>
+        <Text>Curious about the progress?</Text>
+        <Link
+          className="mt-8 w-fit relative p-4 flex flex-col  gap-y-4 cursor-pointer outline transition-all hover:-translate-x-1 hover:outline-foreground outline-foreground/20 rounded-md"
+          href="https://github.com/JohnVicke/astro-portfolio"
+        >
+          &nearr; View source on GitHub{" "}
+        </Link>
+      </div>
+    )
+  }
+  <div class="flex gap-2">
+    {
+      sortedPosts.map(({ data, slug }) => (
+        <PostPreview
+          slug={slug}
+          title={data.title}
+          description={data.description}
+          date={data.date}
+        />
+      ))
+    }
+  </div>
+</MainLayout>

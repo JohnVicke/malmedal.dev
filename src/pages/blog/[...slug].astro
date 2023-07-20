@@ -1,0 +1,38 @@
+---
+import Link from "@/components/Link";
+import Text from "@/components/Text";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { formatDateToDisplay } from "@/utils/date";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const {
+  post,
+  post: {
+    data: { title, description, date },
+  },
+} = Astro.props;
+const { Content } = await post.render();
+---
+
+<MainLayout title={title}>
+  <div class="flex flex-col-reverse">
+    <Text level="h1">{title}</Text>
+    <time class="text-foreground/70">{formatDateToDisplay(date)}</time>
+  </div>
+  <Content />
+  <Link href="/blog" className="mt-12">← Back to blog</Link>
+</MainLayout>
