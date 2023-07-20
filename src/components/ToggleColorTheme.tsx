@@ -1,6 +1,5 @@
-import { Icons } from "@/components/Icons";
-import { cn } from "@/utils/cn";
 import React from "react";
+import { Icons } from "@/components/Icons";
 
 const getLocalTheme = () =>
   localStorage.getItem("darkMode") === "true" ? "dark" : "light";

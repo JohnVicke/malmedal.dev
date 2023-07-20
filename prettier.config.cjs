@@ -18,7 +18,16 @@ const config = {
   ],
   tailwindConfig: "./tailwind.config.cjs",
   importOrderTypeScriptVersion: "4.4.0",
-  importOrder: ["<THIRD_PARTY_MODULES>", "", "^[./]"],
+  importOrder: [
+    "<THIRD_PARTY_MODULES>",
+    "^@/utils/(.*)$",
+    "^@/layouts/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
+    "^@/(.*)$",
+    "",
+    "^[./]",
+  ],
   overrides: [
     {
       files: "*.astro",
