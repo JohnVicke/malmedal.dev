@@ -23,7 +23,7 @@ const ToggleThemeComponent = ({
     <>
       {theme !== "dark" ? (
         <button
-          className="rounded-md bg-foreground/20 p-1 text-foreground/70 hover:bg-foreground/30 hover:text-foreground"
+          className="rounded-md bg-foreground/5 p-1 text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
           key="sun-icon"
           onClick={onClick}
         >
@@ -34,7 +34,7 @@ const ToggleThemeComponent = ({
         <button
           key="moon-icon"
           onClick={onClick}
-          className="rounded-md bg-foreground/10 p-1 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+          className="rounded-md bg-foreground/5 p-1 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
         >
           <div className="sr-only">{`toggle-${tooltip}`}</div>
           <Icons.moon />

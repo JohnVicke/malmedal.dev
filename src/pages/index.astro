@@ -1,4 +1,6 @@
 ---
+import { Icons } from "@/components/Icons";
+import Link from "@/components/Link";
 import Text from "@/components/Text";
 
 import MainLayout from "../layouts/MainLayout.astro";
@@ -7,25 +9,58 @@ const title = "viktor • home";
 ---
 
 <MainLayout title={title}>
-  <Text level="h1">Hi 👋, I'm Viktor Malmedal</Text>
-  <div class="leading-7">
-    <div class="pt-1"></div>
+  <Text level="h1">
+    Hi 👋, <br class="block sm:hidden" /> I'm Viktor Malmedal
+  </Text>
+  <div class="flex flex-col gap-y-8">
+    <Text>Passionate full stack engineer from the north</Text>
+    <div class="border-b border-b-foreground/20 w-1/2"></div>
     <Text>
-      Passionate full stack engineer with a focus on creating captivating user
-      experiences.
+      I’m specialized in <b>web development</b>, and enjoy exploring the latest
+      frameworks <i>(before they become legacy)</i> to build <b
+        >seamless digital solutions</b
+      >. My journey has been <b>diverse</b>, having worked with large
+      corporations like
+      <Link href="https://cygni.se/" children="Cygni" />
+       and <Link href="https://schibsted.com/" children="Schibsted" /> and agile
+      startups like <Link href="https://en.coeo.events/" children="Coeo" />.
+      This <b>varied experience</b> has broadened my <b>knowledge</b>, enabling
+      me to <b>adapt and thrive in any environment</b>.
     </Text>
-    <div class="my-4 border-b border-b-foreground/20 w-1/2"></div>
-     I’m a fullstack engineer specialized in web development, regularly
-    exploring the latest frameworks to build seamless digital solutions. My
-    journey has been diverse, having worked with large corporations like Cygni
-    and Schibsted and agile startups like Coeo. This varied experience has
-    broadened my knowledge, enabling me to adapt and thrive in any environment.<br
-    /><br />
-     When I'm not coding you'll find me embracing an active lifestyle as a
-    competitive powerlifter, struggling disc golfer, retired action sports
-    enthusiast and avid gamer.
-
-    <div class="my-4 border-b border-b-foreground/20 w-1/2"></div>
+    <div class="w-full gap-4 flex flex-col sm:flex-row justify-center">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        class="opacity-70 hover:opacity-100 w-full gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1"
+        href="mailto:viktor@malmedal.dev"
+      >
+        <div class="flex gap-x-8">
+          <Icons.linkedIn />
+           View profile
+        </div>
+        <Icons.arrowUpRight />
+      </a>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        class="opacity-70 hover:opacity-100 w-full gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1"
+        href="mailto:viktor@malmedal.dev"
+      >
+        <div class="flex gap-x-8">
+          <Icons.mail />
+           Mail me
+        </div>
+        <Icons.arrowUpRight />
+      </a>
+    </div>
+    <Text>
+      When I'm not <b>coding</b> you'll find me embracing an <b
+        >active lifestyle</b
+      > as a competitive <b>powerlifter</b>, struggling <b>disc golfer</b>,
+      retired <b>action sports</b>
+       enthusiast and <b>avid gamer</b>.
+    </Text>
+    <div class="border-b border-b-foreground/20 w-1/2"></div>
     <Text className="italic">
       <span class="font-bold not-italic">tl;dr</span> I like to create cool
       stuff

@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
-import Link from "@/components/Link";
 import PostPreview from "@/components/PostPreview.astro";
 import Text from "@/components/Text";
 
@@ -21,12 +20,14 @@ const title = "viktor • blog";
       <div class="flex flex-col">
         <Text>My blog is currently under construction 🚧</Text>
         <Text>Curious about the progress?</Text>
-        <Link
-          className="mt-8 w-fit relative p-4 flex flex-col  gap-y-4 cursor-pointer outline transition-all hover:-translate-x-1 hover:outline-foreground outline-foreground/20 rounded-md"
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 w-fit relative p-4 flex flex-col  gap-y-4 cursor-pointer outline transition-all hover:-translate-x-1 hover:outline-foreground outline-foreground/20 rounded-md"
           href="https://github.com/JohnVicke/malmedal.dev"
         >
           &nearr; View source on GitHub{" "}
-        </Link>
+        </a>
       </div>
     )
   }

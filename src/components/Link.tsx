@@ -15,7 +15,7 @@ export default function Link({
   return (
     <a
       className={cn(
-        "text-foreground/70 transition-colors hover:text-foreground",
+        "underline-offset-3 text-foreground underline decoration-foreground/30 transition-all hover:decoration-foreground",
         className,
       )}
       href={href}

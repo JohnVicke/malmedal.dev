@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   Home,
   LucideProps,
   Mail,
@@ -18,6 +19,7 @@ export const Icons = {
   monitor: Monitor,
   sun: Sun,
   moon: Moon,
+  arrowUpRight: ArrowUpRight,
   linkedIn: (props: LucideProps) => (
     <svg
       {...props}
