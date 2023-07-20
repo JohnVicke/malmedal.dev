@@ -40,9 +40,3 @@ const Text = <T extends TextComponent>({
 };
 
 export default Text;
-
-export const createText = (level: TextComponent) => {
-  return (props: Omit<TextProps<TextComponent>, "level">) => (
-    <Text {...props} level={level} />
-  );
-};
