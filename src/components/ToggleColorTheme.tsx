@@ -2,7 +2,6 @@ import React from "react";
 import { Icons } from "@/components/Icons";
 
 const setLocalTheme = (theme: "dark" | "light") => {
-  console.log("setting theme", theme);
   localStorage.setItem("theme", theme);
   const html = document.querySelector("html");
   if (html) html.className = theme;
