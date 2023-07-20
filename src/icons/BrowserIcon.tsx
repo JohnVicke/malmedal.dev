@@ -1,6 +1,6 @@
 import React from "react";
 
-export const BrowserIcon = ({ color }: { color: string }) => (
+export const BrowserIcon = () => (
   <svg
     width="24"
     height="24"

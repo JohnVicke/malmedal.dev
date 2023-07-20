@@ -1,0 +1,22 @@
+{
+  "title": "Dreamquest",
+  "year": 2023,
+  "description": "Dreamquest is a reddit clone created for the sole purpose of exploring the new Next13 app router. Currently it supports creating communities, posts and interacting with them (upvote, comment, create threads).",
+  "website": {
+    "label": "Dreamquest",
+    "href": "https://dream-quest.vercel.app/"
+  },
+  "github": {
+    "label": "Github dream quest",
+    "href": "https://github.com/johnvicke/dream-quest"
+  },
+  "tech": [
+    "Next",
+    "TypeScript",
+    "Tailwind",
+    "Vercel",
+    "Turborepo",
+    "Drizzle ORM",
+    "Planetscale"
+  ]
+}

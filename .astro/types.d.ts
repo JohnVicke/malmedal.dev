@@ -211,7 +211,24 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"project": {
+"dreamquest": {
+	id: "dreamquest";
+  collection: "project";
+  data: InferEntrySchema<"project">
+};
+"kodverk": {
+	id: "kodverk";
+  collection: "project";
+  data: InferEntrySchema<"project">
+};
+"monorepo-fix-import": {
+	id: "monorepo-fix-import";
+  collection: "project";
+  data: InferEntrySchema<"project">
+};
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

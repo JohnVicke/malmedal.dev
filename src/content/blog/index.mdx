@@ -2,24 +2,22 @@
 title: "Index"
 description: "This is my first blog post!"
 date: "July 20, 2023"
-draft: true
 ---
 
-import Li from "../../components/Li";
-import Ul from "../../components/Ul";
 import Link from "../../components/Link";
-import Code from "../../components/Code";
-import { createText } from "../../components/Text"
+import Code from "../../components/mdx/Code";
+import { createHeader } from "../../components/mdx/createHeader";
+import Li from "../../components/mdx/Li";
+import Ul from "../../components/mdx/Ul";
 
 export const components = {
   a: Link,
   code: Code,
-  h1: createText("h1"),
-  h2: createText("h2"),
-  h3: createText("h3"),
+  h1: createHeader("h1"),
+  h2: createHeader("h2"),
+  h3: createHeader("h3"),
   li: Li,
   ul: Ul,
 };
 
 In Progress...
-

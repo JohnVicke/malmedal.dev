@@ -1,14 +1,16 @@
 ---
+import type { Blog } from "@/content/config";
 import { formatDateToDisplay } from "@/utils/date";
 
 export interface Props {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
+  post: Blog & {
+    slug: string;
+  };
 }
 
-const { title, description, date, slug } = Astro.props as Props;
+const {
+  post: { title, slug, date, description },
+} = Astro.props as Props;
 ---
 
 <article
