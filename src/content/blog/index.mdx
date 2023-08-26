@@ -1,36 +1,49 @@
 ---
 title: "Index"
-description: "This is my first blog post!"
-date: "July 20, 2023"
+description: "Hello world! This is my first blog post!"
+date: "Aug 26, 2023"
 draft: true
 ---
 
 import Link from "../../components/Link";
+import Code from "../../components/mdx/Code";
 import { createHeader } from "../../components/mdx/createHeader";
 import Li from "../../components/mdx/Li";
 import Ul from "../../components/mdx/Ul";
-import Code from "../../components/mdx/Code";
 
 export const components = {
   a: Link,
-  h1: createHeader("h1"),
   h2: createHeader("h2"),
   h3: createHeader("h3"),
   li: Li,
   ul: Ul,
-  pre: Code
+  pre: Code,
+  p: (props) => <p className="my-6" {...props} />,
 };
 
-In Progress...
+## Hello there!
 
-# Heading 1
-## Heading 2
-### Heading 3
+Just wanted to drop a quick hello 👋 as I kick off this blog. I'm all about diving headfirst into things that fascinate me, and I'm stoked to start sharing my thoughts right here.
 
-[a link](http://google.com)
+You can expect developer workflow tips, tech reviews, what I'm currently building and whatever cool stuff I'm currently interested in.
 
+## Behind the scenes
+
+This blog? It's built using [astro](https://astro.build/), hosted on [vercel](https://vercel.com) styled with [tailwind](https://tailwindcss.com)
+
+- Built using [Astro](https://astro.build/)
+- Styled with [Tailwind CSS](https://tailwindcss.com)
+- Hosted on [Vercel](https://vercel.com)
+- Static content with [MDX](https://mdxjs.com/)
+- Client islands in [React](https://react.dev/) (I'll probably add more libs because it's fun 😇)
+- Open sourced on my [Github](https://github.com/johnvicke/malmedal.dev)
+
+## Next up
+
+For my next post I'll go more in depth on how I have setup the blog and projects section of this site using [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/).
 
 ```js /age/#v /name/#v /setAge/#s /setName/#s /50/#i /'Taylor'/#i
-const [age, setAge] = useState(50);
-const [name, setName] = useState('Taylor');
+const posts = await getCollection("blog");
 ```
+
+Catch you on the flip side!
