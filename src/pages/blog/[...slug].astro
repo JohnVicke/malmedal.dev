@@ -2,7 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { formatDateToDisplay } from "@/utils/date";
+import { estimateReadingTime } from "@/utils/estimated-reading-time";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { Callout } from "@/components/Callout";
 import Link from "@/components/Link";
 import Text from "@/components/Text";
 
@@ -22,17 +24,38 @@ type Props = {
 const {
   post,
   post: {
-    data: { title, description, date },
+    data: { title, description, date, draft },
   },
 } = Astro.props;
 const { Content } = await post.render();
+const estRead = estimateReadingTime(post.body);
 ---
 
 <MainLayout title={title}>
-  <div class="flex flex-col-reverse">
-    <Text level="h1">{title}</Text>
-    <time class="text-foreground/70">{formatDateToDisplay(date)}</time>
+  <article class="flex-1">
+    {
+      draft && (
+        <Callout
+          className="mb-12"
+          title="🚧 This is a draft post"
+          description="If you have access to see this, awesome! Please don't leak it before it's public 🙏"
+        />
+      )
+    }
+    <div class="flex flex-col-reverse gap-y-2">
+      <Text className="my-0" level="h1">{title}</Text>
+      <p>
+        <time class="text-foreground/70">{formatDateToDisplay(date)}</time>
+        <span class="text-foreground/70"> · {estRead} read</span>
+      </p>
+    </div>
+    <Text className="my-8">{description}</Text>
+    <div class="flex-1 mb-12">
+      <Content />
+      <p>// Viktor</p>
+    </div>
+  </article>
+  <div class="flex justify-between items-center">
+    <Link href="/blog" className="w-fit">← Back to blog</Link>
   </div>
-  <Content />
-  <Link href="/blog" className="mt-12">← Back to blog</Link>
 </MainLayout>
