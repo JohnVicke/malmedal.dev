@@ -1,15 +1,11 @@
 import React from "react";
 import { cn } from "@/utils/cn";
 
-import Text from "./Text";
-
-interface CalloutProps {
-  title: string;
-  description: string;
+interface CardProps {
   className?: string;
 }
 
-export function Callout(props: CalloutProps) {
+export function Card(props: React.PropsWithChildren<CardProps>) {
   return (
     <div
       className={cn(
@@ -17,8 +13,7 @@ export function Callout(props: CalloutProps) {
         props.className,
       )}
     >
-      <Text level="h3">{props.title}</Text>
-      <Text>{props.description}</Text>
+      {props.children}
     </div>
   );
 }

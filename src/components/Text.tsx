@@ -12,11 +12,11 @@ export type TextProps<TComponent extends TextComponent> =
     level?: TextComponent;
   };
 
-const textVariants = cva("text-foreground", {
+const textVariants = cva("text-foreground tracking-wide", {
   variants: {
     level: {
       h1: "text-2xl mb-4 font-bold",
-      h2: "text-xl mb-2 font-bold",
+      h2: "text-2xl mb-2 font-bold",
       h3: "text-lg mb-2 font-bold",
       p: "text-base font-normal",
     },

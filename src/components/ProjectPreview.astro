@@ -1,6 +1,5 @@
 ---
-import { Icons } from "@/components/Icons";
-import { Project } from "@/content/config";
+import type { Project } from "@/content/config";
 
 import Text from "./Text";
 
@@ -14,49 +13,31 @@ const {
 ---
 
 <article
-  class="relative py-4 flex flex-col w-full gap-y-4 rounded-md"
+  class="group relative py-4 flex flex-col w-full gap-y-4 rounded-md hover:bg-foreground/5 transition-all p-4"
 >
+  <a
+    class="absolute inset-0 z-10"
+    target="_blank"
+    rel="noopener noreferrer"
+    href={github?.href}
+  >
+    <span class="sr-only">{title}</span>
+  </a>
   <div class="flex items-center justify-between gap-4">
-    <Text level="h3">
+    <Text
+      className="underline decoration-foreground/50 group-hover:decoration-foreground transition-all"
+      level="h3"
+    >
       {title}
     </Text>
     <an class="flex-1 border-b border-foreground/20"></an>
     <time>{year}</time>
   </div>
-  <div class="flex flex-col sm:flex-row gap-4">
-    <p>{description}</p>
-    <div class="flex flex-row sm:flex-col gap-4 items-start">
-      {
-        github && (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={github.href}
-            class="inline-flex items-center gap-2 transition-all border border-foreground hover:opacity-100 opacity-50 px-1 py-1 rounded-md"
-          >
-            <Icons.github />
-            <span class="sr-only">View source</span>
-          </a>
-        )
-      }
-      {
-        website && (
-          <a
-            rel="noopener noreferrer"
-            href={website.href}
-            class="inline-flex items-center gap-2 transition-all border border-foreground hover:opacity-100 opacity-50 px-1 py-1 rounded-md"
-          >
-            <Icons.monitor />
-            <span class="sr-only">Preview</span>
-          </a>
-        )
-      }
-    </div>
-  </div>
+  <p>{description}</p>
   <div class="flex flex-wrap items-center gap-2">
     {
       tech.map((t) => (
-        <div class="text-xs bg-foreground/10 p-2 rounded-sm">
+        <div class="text-xs bg-foreground/5 outline-1 outline-foreground/10 outline p-2 rounded-md">
           <p>{t}</p>
         </div>
       ))
