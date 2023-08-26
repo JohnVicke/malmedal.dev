@@ -14,13 +14,13 @@ const {
 ---
 
 <article
-  class="relative p-4 flex flex-col w-full gap-y-4 cursor-pointer outline transition-all hover:-translate-x-1 hover:outline-foreground outline-foreground/20 rounded-md"
+  class="group relative p-4 flex flex-col w-full gap-y-4 cursor-pointer transition-all hover:bg-foreground/5 rounded-md"
 >
   <a class="absolute inset-0 z-10" href={`/blog/${slug}`}>
     <span class="sr-only">{title}</span>
   </a>
   <div class="flex items-center justify-between gap-4">
-    <h3 class="font-bold">
+    <h3 class="group-hover:underline font-bold transition-all">
       {title}
     </h3>
     <span class="flex-1 border-b border-foreground/20"></span>
