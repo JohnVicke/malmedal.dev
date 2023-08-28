@@ -31,7 +31,7 @@ const { Content } = await post.render();
 const estRead = estimateReadingTime(post.body);
 ---
 
-<MainLayout title={title}>
+<MainLayout title={title} description={description}>
   <article class="flex-1">
     {
       draft && (
