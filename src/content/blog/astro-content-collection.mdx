@@ -1,0 +1,42 @@
+---
+title: "How did I build this site?"
+description: "Honestly, I think this is the third time I've rebuilt my website. I'm not the first software eng that has decided its time to update their profile and instead found a way to rewrite their own website."
+date: "Aug 28, 2023"
+draft: true
+---
+
+import Link from "../../components/Link";
+import Code from "../../components/mdx/Code";
+import { createHeader } from "../../components/mdx/createHeader";
+import Li from "../../components/mdx/Li";
+import Ul from "../../components/mdx/Ul";
+
+export const components = {
+  a: Link,
+  h2: createHeader("h2"),
+  h3: createHeader("h3"),
+  li: Li,
+  ul: Ul,
+  pre: Code,
+  p: (props) => <p className="mb-8" {...props} />,
+};
+
+## Third times the charm?
+
+## Astro Content Collections
+
+### Zod
+
+### MDX
+
+### JSON
+
+
+## Xata serverless Postgres ❤️ Astro
+
+## Vercel Analytics
+
+```js 
+const posts = await getCollection("blog");
+```
+
