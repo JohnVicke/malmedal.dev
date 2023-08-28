@@ -14,7 +14,8 @@
     "astro": "astro",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json,astro}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json,astro}\" --ignore-path .gitignore",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "xata:pull": "xata pull main"
   },
   "devDependencies": {
     "@astrojs/react": "^2.2.1",
@@ -33,6 +34,7 @@
     "@astrojs/vercel": "^3.7.3",
     "@fontsource/fira-code": "^5.0.5",
     "@types/uuid": "^9.0.2",
+    "@xata.io/client": "^0.26.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.262.0",
