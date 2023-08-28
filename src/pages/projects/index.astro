@@ -5,6 +5,7 @@ import ProjectPreview from "@/components/ProjectPreview.astro";
 import Text from "@/components/Text";
 
 const projects = await getCollection("project");
+export const prerender = true;
 
 const title = "viktor • projects";
 ---
