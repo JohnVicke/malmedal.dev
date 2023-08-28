@@ -1,4 +1,3 @@
-/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
 /** @typedef  {import("prettier").Config} PrettierConfig*/
 /** @typedef  {{ tailwindConfig: string }} TailwindConfig*/
 
@@ -11,23 +10,8 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
-  plugins: [
-    "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss",
-    "prettier-plugin-astro",
-  ],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   tailwindConfig: "./tailwind.config.cjs",
-  importOrderTypeScriptVersion: "4.4.0",
-  importOrder: [
-    "<THIRD_PARTY_MODULES>",
-    "^@/utils/(.*)$",
-    "^@/layouts/(.*)$",
-    "^@/components/(.*)$",
-    "^@/styles/(.*)$",
-    "^@/(.*)$",
-    "",
-    "^[./]",
-  ],
   overrides: [
     {
       files: "*.astro",

@@ -1,34 +1,33 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import { formatDateToDisplay } from "@/utils/date";
 import { estimateReadingTime } from "@/utils/estimated-reading-time";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { Callout } from "@/components/Callout";
 import Link from "@/components/Link";
 import Text from "@/components/Text";
+import { updateAndSelectPageView } from "@/lib/update-page-view";
 
-export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+const { slug } = Astro.params;
 
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+if (!slug) {
+  throw new Error("No slug provided");
 }
 
-type Props = {
-  post: CollectionEntry<"blog">;
-};
+const entry = await getEntry("blog", slug);
+
+if (!entry) return Astro.redirect("/404");
 
 const {
-  post,
-  post: {
-    data: { title, description, date, draft },
-  },
-} = Astro.props;
-const { Content } = await post.render();
-const estRead = estimateReadingTime(post.body);
+  render,
+  body,
+  data: { title, description, date, draft },
+} = entry;
+
+const { Content } = await render();
+const estRead = estimateReadingTime(body);
+
+const res = await updateAndSelectPageView(slug);
 ---
 
 <MainLayout title={title} description={description}>
@@ -46,6 +45,7 @@ const estRead = estimateReadingTime(post.body);
     <p class="text-sm">
       <time class="text-foreground/70">{formatDateToDisplay(date)}</time>
       <span class="text-foreground/70"> · {estRead} read</span>
+      <span class="text-foreground/70"> · {res?.views ?? 0} views</span>
     </p>
     <Text className="my-8">{description}</Text>
     <div class="flex-1 mb-12">
