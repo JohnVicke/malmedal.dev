@@ -17,6 +17,9 @@ dependencies:
   '@types/uuid':
     specifier: ^9.0.2
     version: 9.0.2
+  '@xata.io/client':
+    specifier: ^0.26.0
+    version: 0.26.0(typescript@5.1.6)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -1087,6 +1090,14 @@ packages:
 
   /@vscode/l10n@0.0.14:
     resolution: {integrity: sha512-/yrv59IEnmh655z1oeDnGcvMYwnEzNzHLgeYcQCkhYX0xBvYWrAuefoiLcPBUkMpJsb46bqQ6Yv4pwTTQ4d3Qg==}
+
+  /@xata.io/client@0.26.0(typescript@5.1.6):
+    resolution: {integrity: sha512-0JPn2gEo9acNRpfeEzvBRInia//NIWztQ9mRjd+ZItwZG659eAtxB6A5NFEwAjHXoYwCtvOHht1v6S6Pd2f0Ew==}
+    peerDependencies:
+      typescript: '>=4.5'
+    dependencies:
+      typescript: 5.1.6
+    dev: false
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
