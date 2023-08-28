@@ -1,12 +1,14 @@
 ---
 import { formatDateToDisplay } from "@/utils/date";
+import Text from "./Text";
 import type { Blog } from "@/content/config";
+import { Icons } from "./Icons";
 
 export interface Props {
   post: Blog & {
     slug: string;
   };
-  views: number;
+  views?: number;
 }
 
 const {
@@ -16,20 +18,22 @@ const {
 ---
 
 <article
-  class="group relative p-4 flex flex-col w-full gap-y-4 cursor-pointer transition-all hover:bg-foreground/5 rounded-md"
+  class="group relative justify-between p-4 flex hover:translate-x-1 w-full gap-y-4 cursor-pointer transition-all rounded-md bg-foreground/5 hover:bg-foreground/10 outline outline-1 outline-foreground/10 hover:outline-foreground/20"
 >
   <a class="absolute inset-0 z-10" href={`/blog/${slug}`}>
     <span class="sr-only">{title}</span>
   </a>
-  <div class="flex items-center justify-between gap-4">
-    <h3
-      class="underline decoration-foreground/50 group-hover:decoration-foreground font-bold transition-all"
-    >
-      {title}
-    </h3>
-    <span class="flex-1 border-b border-foreground/20"></span>
-    <time>{formatDateToDisplay(date)}</time>
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-4">
+      <Text className="mb-0" level="h3">
+        {title}
+      </Text>
+      <span class="flex items-center gap-x-4 text-foreground/70 text-sm">
+        <time> · {formatDateToDisplay(date)}</time>
+        {views && <p>· {views} views</p>}
+      </span>
+    </div>
+    <Text>{description}</Text>
   </div>
-  <p class="ml-2">{description}</p>
-  <p class="text-sm">{views} views</p>
+  <Icons.arrowUpRight />
 </article>

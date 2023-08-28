@@ -4,8 +4,12 @@ import Link from "@/components/Link";
 import Text from "@/components/Text";
 
 import MainLayout from "../layouts/MainLayout.astro";
+import { getEntryBySlug } from "astro:content";
+import PostPreview from "@/components/PostPreview.astro";
 
 export const prerender = true;
+
+const indexPost = await getEntryBySlug("blog", "index");
 
 const title = "viktor • home";
 ---
@@ -33,7 +37,7 @@ const title = "viktor • home";
       <a
         target="_blank"
         rel="noopener noreferrer"
-        class="opacity-70 hover:opacity-100 w-full gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1"
+        class="w-full outline outline-1 outline-foreground/10 gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1 hover:bg-foreground/10 hover:outline-foreground/20"
         href="https://www.linkedin.com/in/viktor-malmedal"
       >
         <div class="flex gap-x-8">
@@ -45,7 +49,7 @@ const title = "viktor • home";
       <a
         target="_blank"
         rel="noopener noreferrer"
-        class="opacity-70 hover:opacity-100 w-full gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1"
+        class="w-full outline outline-1 outline-foreground/10 gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1 hover:bg-foreground/10 hover:outline-foreground/20"
         href="mailto:viktor@malmedal.dev"
       >
         <div class="flex gap-x-8">
@@ -55,6 +59,17 @@ const title = "viktor • home";
         <Icons.arrowUpRight />
       </a>
     </div>
+    <Text>
+      I recently kicked off my <b>blogging journey</b>, where I'll be sharing my
+
+
+      <b>thoughts</b> and <b>insights</b> on various topics as I <b>learn</b>
+       and make
+      <b>progress</b>. It will be a fun <b>challenge</b> to document my <b
+        >personal</b
+      > and <b>professional</b> journey.
+    </Text>
+    <PostPreview post={{ ...indexPost.data, slug: "index" }} />
     <Text>
       When I'm not <b>coding</b> you'll find me embracing an <b
         >active lifestyle</b
