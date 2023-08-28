@@ -4,7 +4,9 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { Icons } from "@/components/Icons";
 import PostPreview from "@/components/PostPreview.astro";
 import Text from "@/components/Text";
+import { getPageViews } from "@/lib/get-pageviews";
 
+const pageViews = await getPageViews();
 const posts = await getCollection("blog");
 
 const sortedPosts = posts
@@ -44,6 +46,7 @@ const title = "viktor • blog";
             slug,
             ...data,
           }}
+          views={pageViews.find((pageView) => pageView.id === slug)?.views ?? 0}
         />
       ))
     }
