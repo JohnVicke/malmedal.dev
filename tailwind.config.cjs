@@ -10,6 +10,9 @@ module.exports = {
         primary: "hsl(var(--primary))",
         "primary-foreground": "hsl(var(--primary-foreground))",
       },
+      minWidth: {
+        8: "1.5rem",
+      },
     },
   },
   plugins: [],

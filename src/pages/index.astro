@@ -6,6 +6,8 @@ import Text from "@/components/Text";
 import MainLayout from "../layouts/MainLayout.astro";
 import { getEntryBySlug } from "astro:content";
 import PostPreview from "@/components/PostPreview.astro";
+import { cn } from "@/utils/cn";
+import { button } from "@/styles/classes";
 
 export const prerender = true;
 
@@ -37,26 +39,26 @@ const title = "viktor • home";
       <a
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full outline outline-1 outline-foreground/10 gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1 hover:bg-foreground/10 hover:outline-foreground/20"
+        class={cn(button, "gap-4 inline-flex justify-between")}
         href="https://www.linkedin.com/in/viktor-malmedal"
       >
-        <div class="flex gap-x-8">
+        <div class="flex gap-x-4">
           <Icons.linkedIn />
            View profile
         </div>
-        <Icons.arrowUpRight />
+        <Icons.arrowUpRight className="min-w-8" />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full outline outline-1 outline-foreground/10 gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1 hover:bg-foreground/10 hover:outline-foreground/20"
+        class={cn(button, "gap-4 inline-flex justify-between")}
         href="mailto:viktor@malmedal.dev"
       >
-        <div class="flex gap-x-8">
+        <div class="flex gap-x-4">
           <Icons.mail />
            Mail me
         </div>
-        <Icons.arrowUpRight />
+        <Icons.arrowUpRight className="min-w-8" />
       </a>
     </div>
     <Text>

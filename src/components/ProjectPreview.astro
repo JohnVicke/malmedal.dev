@@ -2,6 +2,8 @@
 import type { Project } from "@/content/config";
 
 import Text from "./Text";
+import { button } from "@/styles/classes";
+import { cn } from "@/utils/cn";
 
 export interface Props {
   project: Project;
@@ -12,9 +14,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<article
-  class="group relative py-4 flex flex-col w-full gap-y-4 rounded-md hover:bg-foreground/5 transition-all p-4"
->
+<article class={cn(button, "group relative flex flex-col w-full gap-y-4")}>
   <a
     class="absolute inset-0 z-10"
     target="_blank"
@@ -23,15 +23,11 @@ const {
   >
     <span class="sr-only">{title}</span>
   </a>
-  <div class="flex items-center justify-between gap-4">
-    <Text
-      className="underline decoration-foreground/50 group-hover:decoration-foreground transition-all"
-      level="h3"
-    >
+  <div class="flex flex-col md:flex-row gap-2 items-center">
+    <Text className="mb-0" level="h3">
       {title}
     </Text>
-    <an class="flex-1 border-b border-foreground/20"></an>
-    <time>{year}</time>
+    <time class="text-foreground/70 text-sm"> · {year}</time>
   </div>
   <p>{description}</p>
   <div class="flex flex-wrap items-center gap-2">

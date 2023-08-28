@@ -3,6 +3,8 @@ import { formatDateToDisplay } from "@/utils/date";
 import Text from "./Text";
 import type { Blog } from "@/content/config";
 import { Icons } from "./Icons";
+import { cn } from "@/utils/cn";
+import { button } from "@/styles/classes";
 
 export interface Props {
   post: Blog & {
@@ -18,22 +20,24 @@ const {
 ---
 
 <article
-  class="group relative justify-between p-4 flex hover:translate-x-1 w-full gap-y-4 cursor-pointer transition-all rounded-md bg-foreground/5 hover:bg-foreground/10 outline outline-1 outline-foreground/10 hover:outline-foreground/20"
+  class={cn(button, "relative justify-between gap-x-2 flex items-center")}
 >
   <a class="absolute inset-0 z-10" href={`/blog/${slug}`}>
     <span class="sr-only">{title}</span>
   </a>
   <div class="flex flex-col gap-y-2">
-    <div class="flex gap-x-4">
+    <div class="flex flex-col md:flex-row gap-2">
       <Text className="mb-0" level="h3">
         {title}
       </Text>
-      <span class="flex items-center gap-x-4 text-foreground/70 text-sm">
-        <time> · {formatDateToDisplay(date)}</time>
+      <span
+        class="flex flex-wrap items-center gap-x-4 text-foreground/70 text-sm"
+      >
+        <time class=""> · {formatDateToDisplay(date)}</time>
         {views && <p>· {views} views</p>}
       </span>
     </div>
     <Text>{description}</Text>
   </div>
-  <Icons.arrowUpRight />
+  <Icons.arrowUpRight className="min-h-8 min-w-8" />
 </article>
