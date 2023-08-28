@@ -6,27 +6,28 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { Callout } from "@/components/Callout";
 import Link from "@/components/Link";
 import Text from "@/components/Text";
-import {updateAndSelectPageView} from "@/lib/update-page-view";
+import { updateAndSelectPageView } from "@/lib/update-page-view";
 
-const {slug} = Astro.params
+const { slug } = Astro.params;
 
-if(!slug) {
-  throw new Error("No slug provided")
+if (!slug) {
+  throw new Error("No slug provided");
 }
 
-const entry = await getEntry("blog", slug)
+const entry = await getEntry("blog", slug);
 
-if(!entry) {
-  return Astro.redirect("/404")
-}
+if (!entry) return Astro.redirect("/404");
 
-const {render, body,  data: {title, description, date, draft}} = entry
+const {
+  render,
+  body,
+  data: { title, description, date, draft },
+} = entry;
 
 const { Content } = await render();
 const estRead = estimateReadingTime(body);
 
-const res = await updateAndSelectPageView(slug)
-
+const res = await updateAndSelectPageView(slug);
 ---
 
 <MainLayout title={title} description={description}>
