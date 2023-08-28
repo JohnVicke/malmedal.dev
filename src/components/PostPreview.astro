@@ -6,10 +6,12 @@ export interface Props {
   post: Blog & {
     slug: string;
   };
+  views: number;
 }
 
 const {
   post: { title, slug, date, description },
+  views,
 } = Astro.props as Props;
 ---
 
@@ -28,5 +30,6 @@ const {
     <span class="flex-1 border-b border-foreground/20"></span>
     <time>{formatDateToDisplay(date)}</time>
   </div>
-  <p>{description}</p>
+  <p class="ml-2">{description}</p>
+  <p class="text-sm">{views} views</p>
 </article>
