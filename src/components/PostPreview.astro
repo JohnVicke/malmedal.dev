@@ -14,7 +14,7 @@ export interface Props {
 }
 
 const {
-  post: { title, slug, date, description },
+  post: { title, slug, date },
   views,
 } = Astro.props as Props;
 ---
@@ -26,18 +26,17 @@ const {
     <span class="sr-only">{title}</span>
   </a>
   <div class="flex flex-col gap-y-2">
-    <div class="flex flex-col md:flex-row gap-2">
-      <Text className="mb-0" level="h3">
+    <div class="flex flex-col gap-2">
+      <Text className="mb-0 text-base" level="h3">
         {title}
       </Text>
       <span
-        class="flex flex-wrap items-center gap-x-4 text-foreground/70 text-sm"
+        class="flex flex-wrap items-center gap-x-2 text-foreground/70 text-sm"
       >
-        <time> · {displayDateBuilder(date).format()}</time>
+        <time>{displayDateBuilder(date).format()}</time>
         {views && <p>· {views} views</p>}
       </span>
     </div>
-    <Text className="line-clamp-2">{description}</Text>
   </div>
   <Icons.arrowUpRight className="min-h-8 min-w-8" />
 </article>
