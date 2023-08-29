@@ -8,12 +8,13 @@ import { getPageViews } from "@/db/get-pageviews";
 
 const pageViews = await getPageViews();
 
-const posts = await getCollection("blog", ({data}) => {
-  return !data.draft
+const posts = await getCollection("blog", ({ data }) => {
+  return !data.draft;
 });
 
-const sortedPosts = posts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 
 const title = "viktor • blog";
 ---
