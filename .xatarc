@@ -1,6 +1,6 @@
 {
   "databaseURL": "https://Viktor-Malmedal-s-workspace-qgrnqc.eu-central-1.xata.sh/db/malmedal-dev",
   "codegen": {
-    "output": "src/lib/xata.ts"
+    "output": "src/db/xata.ts"
   }
 }
