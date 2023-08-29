@@ -1,10 +1,10 @@
 ---
-import { formatDateToDisplay } from "@/utils/date";
 import Text from "./Text";
 import type { Blog } from "@/content/config";
 import { Icons } from "./Icons";
 import { cn } from "@/utils/cn";
 import { button } from "@/styles/classes";
+import { displayDateBuilder } from "@/utils/display-text-builder";
 
 export interface Props {
   post: Blog & {
@@ -33,7 +33,7 @@ const {
       <span
         class="flex flex-wrap items-center gap-x-4 text-foreground/70 text-sm"
       >
-        <time class=""> · {formatDateToDisplay(date)}</time>
+        <time> · {displayDateBuilder(date).format()}</time>
         {views && <p>· {views} views</p>}
       </span>
     </div>

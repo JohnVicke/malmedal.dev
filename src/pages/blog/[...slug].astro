@@ -1,12 +1,14 @@
 ---
 import { getEntry } from "astro:content";
-import { formatDateToDisplay } from "@/utils/date";
-import { estimateReadingTime } from "@/utils/estimated-reading-time";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { Callout } from "@/components/Callout";
 import Link from "@/components/Link";
 import Text from "@/components/Text";
-import { updateAndSelectPageView } from "@/lib/update-page-view";
+import { updateAndSelectPageView } from "@/db/update-page-view";
+import {
+  displayDateBuilder,
+  displayReadingTimeBuilder,
+} from "@/utils/display-text-builder";
 
 const { slug } = Astro.params;
 
@@ -20,12 +22,10 @@ if (!entry) return Astro.redirect("/404");
 
 const {
   render,
-  body,
   data: { title, description, date, draft },
 } = entry;
 
-const { Content } = await render();
-const estRead = estimateReadingTime(body);
+const { Content, remarkPluginFrontmatter } = await render();
 
 const res = await updateAndSelectPageView(slug);
 ---
@@ -42,10 +42,20 @@ const res = await updateAndSelectPageView(slug);
       )
     }
     <Text className="text-4xl my-2" level="h1">{title}</Text>
-    <p class="text-sm">
-      <time class="text-foreground/70">{formatDateToDisplay(date)}</time>
-      <span class="text-foreground/70"> · {estRead} read</span>
-      <span class="text-foreground/70"> · {res?.views ?? 0} views</span>
+    <p class="text-sm flex items-center gap-x-4 flex-wrap">
+      <time class="text-foreground/70"
+        >{displayDateBuilder(date).addEmoji().format()}</time
+      >
+      <span class="text-foreground/70">
+        {
+          displayReadingTimeBuilder(
+            remarkPluginFrontmatter.minutesRead as number,
+          )
+            .addEmoji()
+            .format()
+        } read</span
+      >
+      <span class="text-foreground/70"> 👀 {res?.views ?? 0} views</span>
     </p>
     <Text className="my-8">{description}</Text>
     <div class="flex-1 mb-12">
