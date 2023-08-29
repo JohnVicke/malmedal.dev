@@ -1,0 +1,17 @@
+{
+  "id": "mig_cjm6g6svqkfnp5rjn6og",
+  "parentID": "mig_cjm6bn4vqkfnp5rjn630",
+  "checksum": "1:866150a4bb29df7d0438343efcd25ab2d46aedbb563b94d98c2241d9a4a0e9cb",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "slug",
+          "type": "string",
+          "unique": true
+        },
+        "table": "post-meta"
+      }
+    }
+  ]
+}
