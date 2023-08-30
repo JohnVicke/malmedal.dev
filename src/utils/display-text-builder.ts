@@ -1,14 +1,21 @@
 type FormatOptions = {
   withEmoji?: boolean;
+  withBullet?: boolean;
 };
 interface DisplayTextBuilder {
   addEmoji: () => DisplayTextBuilder;
+  addBullet: () => DisplayTextBuilder;
   format: () => string;
+}
+
+export function addBullet(text: string | number) {
+  return `• ${text}`;
 }
 
 export function displayDateBuilder(date: Date): DisplayTextBuilder {
   const options: FormatOptions = {
     withEmoji: false,
+    withBullet: false,
   };
 
   function formatDate() {
@@ -24,10 +31,18 @@ export function displayDateBuilder(date: Date): DisplayTextBuilder {
       if (options.withEmoji) {
         return `📅 ${formatDate()}`;
       }
+      if (options.withBullet) {
+        return addBullet(formatDate());
+      }
       return formatDate();
     },
     addEmoji: () => {
       options.withEmoji = true;
+      return builder;
+    },
+
+    addBullet: () => {
+      options.withBullet = true;
       return builder;
     },
   };
@@ -38,6 +53,7 @@ export function displayDateBuilder(date: Date): DisplayTextBuilder {
 export function displayReadingTimeBuilder(time: number): DisplayTextBuilder {
   const options: FormatOptions = {
     withEmoji: false,
+    withBullet: false,
   };
 
   function formatReadingTime() {
@@ -52,10 +68,20 @@ export function displayReadingTimeBuilder(time: number): DisplayTextBuilder {
       if (options.withEmoji) {
         return `⏱ ${formatReadingTime()}`;
       }
+
+      if (options.withBullet) {
+        return addBullet(formatReadingTime());
+      }
+
       return formatReadingTime();
     },
     addEmoji: () => {
       options.withEmoji = true;
+      return builder;
+    },
+
+    addBullet: () => {
+      options.withBullet = true;
       return builder;
     },
   };
