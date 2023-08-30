@@ -17,13 +17,16 @@ export const components = {
   h3: createHeader("h3"),
   li: Li,
   ul: Ul,
-  pre: Code,
+  pre: (props) => <Code {...props} client:visible />,
   p: (props) => <p className="mb-8" {...props} />,
 };
 
-## Third times the charm?
 
 ## Astro Content Collections
+
+Astro Content Collections are a powerful way to manage static content in your applications.
+
+Astro has excellent documentation, if you want to dive deeper into the framework and especially Content Collections I recommend you to check out the [official documentation](https://docs.astro.build/en/guides/content-collections/).
 
 ### Zod
 

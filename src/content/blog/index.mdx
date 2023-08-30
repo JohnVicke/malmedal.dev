@@ -16,7 +16,7 @@ export const components = {
   h3: createHeader("h3"),
   li: Li,
   ul: Ul,
-  pre: Code,
+  pre: (props) => <Code {...props} client:visible />,
   p: (props) => <p className="mb-8" {...props} />,
 };
 
