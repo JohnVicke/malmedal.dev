@@ -8,6 +8,7 @@ import { updateAndSelectPageView } from "@/db/update-page-view";
 import {
   displayDateBuilder,
   displayReadingTimeBuilder,
+  addBullet,
 } from "@/utils/display-text-builder";
 
 const { slug } = Astro.params;
@@ -27,7 +28,9 @@ const {
 
 const { Content, remarkPluginFrontmatter } = await render();
 
-const res = await updateAndSelectPageView(slug);
+const res = await (draft
+  ? Promise.resolve({ views: 0 })
+  : updateAndSelectPageView(slug));
 ---
 
 <MainLayout title={title} description={description}>
@@ -43,19 +46,20 @@ const res = await updateAndSelectPageView(slug);
     }
     <Text className="text-4xl my-2" level="h1">{title}</Text>
     <p class="text-sm flex items-center gap-x-4 flex-wrap">
-      <time class="text-foreground/70"
-        >{displayDateBuilder(date).addEmoji().format()}</time
+      <time class="text-foreground/70">{displayDateBuilder(date).format()}</time
       >
       <span class="text-foreground/70">
         {
           displayReadingTimeBuilder(
             remarkPluginFrontmatter.minutesRead as number,
           )
-            .addEmoji()
+            .addBullet()
             .format()
         } read</span
       >
-      <span class="text-foreground/70"> 👀 {res?.views ?? 0} views</span>
+      <span class="text-foreground/70">
+        {addBullet(res?.views ?? 0)} views</span
+      >
     </p>
     <Text className="my-8">{description}</Text>
     <div class="flex-1 mb-12">
