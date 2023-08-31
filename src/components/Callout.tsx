@@ -7,6 +7,7 @@ interface CalloutProps {
   title: string;
   description: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 export function Callout(props: CalloutProps) {
@@ -19,6 +20,7 @@ export function Callout(props: CalloutProps) {
     >
       <Text level="h3">{props.title}</Text>
       <Text>{props.description}</Text>
+      {props.children}
     </div>
   );
 }

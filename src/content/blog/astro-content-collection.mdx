@@ -10,6 +10,8 @@ import Code from "../../components/mdx/Code";
 import { createHeader } from "../../components/mdx/createHeader";
 import Li from "../../components/mdx/Li";
 import Ul from "../../components/mdx/Ul";
+import { Callout } from "../../components/Callout"
+import AstroCollectionTree from "../../components/mdx/AstroCollectionTree";
 
 export const components = {
   a: Link,
@@ -25,16 +27,24 @@ export const components = {
 ## Astro Content Collections
 
 Astro Content Collections are a powerful way to manage static content in your applications.
+Content collections live inside Astro's reserved `src/content` directory and generates metadata for your collections in the `.astro` directory.
 
-Astro has excellent documentation, if you want to dive deeper into the framework and especially Content Collections I recommend you to check out the [official documentation](https://docs.astro.build/en/guides/content-collections/).
+<AstroCollectionTree />
+
+
+Astro has excellent documentation, if you want to dive deeper into the framework and especially Content Collections 
+I recommend you to check out the [official documentation](https://docs.astro.build/en/guides/content-collections/).
 
 ### Zod
+
 
 ### MDX
 
 ### JSON
 
 ## Xata serverless Postgres ❤️ Astro
+
+<Callout title="Hello" description="world" className="my-8"/>
 
 ## Vercel Analytics
 
