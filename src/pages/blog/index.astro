@@ -19,7 +19,7 @@ const sortedPosts = posts.sort(
 const title = "viktor • blog";
 ---
 
-<MainLayout title={title}>
+<MainLayout title={title} layout>
   <Text level="h1">Blog</Text>
   {
     sortedPosts.length === 0 && (

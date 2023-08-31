@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/edge";
+import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import { toString as mdastToString } from "mdast-util-to-string";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -89,5 +89,6 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     analytics: true,
+    edgeMiddleware: true,
   }),
 });
