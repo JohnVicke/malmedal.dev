@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Icons } from "@/components/Icons";
 import PostPreview from "@/components/PostPreview.astro";
 import Text from "@/components/Text";
 import { getPageViews } from "@/db/get-pageviews";
@@ -19,28 +18,8 @@ const sortedPosts = posts.sort(
 const title = "viktor • blog";
 ---
 
-<MainLayout title={title} layout>
+<MainLayout title={title}>
   <Text level="h1">Blog</Text>
-  {
-    sortedPosts.length === 0 && (
-      <div class="flex flex-col gap--8">
-        <Text>My blog is currently under construction 🚧</Text>
-        <Text>Curious about the progress?</Text>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit opacity-70 hover:opacity-100 gap-8 inline-flex rounded-md justify-between p-4 bg-foreground/5 transition-all hover:translate-x-1"
-          href="https://github.com/JohnVicke/malmedal.dev"
-        >
-          <div class="flex gap-x-8">
-            <Icons.github />
-            View source on github
-          </div>
-          <Icons.arrowUpRight />
-        </a>
-      </div>
-    )
-  }
   <div class="flex flex-col gap-4">
     {
       sortedPosts?.map(({ data, slug }) => (

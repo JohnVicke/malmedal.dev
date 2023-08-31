@@ -33,7 +33,7 @@ const res = await (import.meta.env.DEV
   : updateAndSelectPageView(slug));
 ---
 
-<MainLayout title={title} description={description} layout>
+<MainLayout title={title} description={description}>
   <article class="flex-1">
     {
       draft && (
@@ -44,10 +44,7 @@ const res = await (import.meta.env.DEV
         />
       )
     }
-    <Text
-      className="text-4xl my-2"
-      level="h1"
-    >
+    <Text className="text-4xl my-2" level="h1">
       {title}
     </Text>
     <p class="text-sm flex items-center gap-x-4 flex-wrap">

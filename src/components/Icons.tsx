@@ -8,7 +8,7 @@ import {
   FileType,
   Folder,
   Home,
-  LucideProps,
+  type LucideProps,
   Mail,
   Monitor,
   Moon,
@@ -41,6 +41,7 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="24 / symbols / linkedin">
+        <title className="sr-only">LinkedIn</title>
         <path
           className="fill-foreground"
           id="icon"
@@ -62,6 +63,7 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="24 / symbols / github">
+        <title className="sr-only">GitHub</title>
         <path
           className="fill-foreground"
           id="icon"
