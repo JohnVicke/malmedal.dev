@@ -5,6 +5,7 @@ import {
   Copy,
   FileJson,
   FileType,
+  FileType2,
   Folder,
   Home,
   Mail,
@@ -76,4 +77,5 @@ export const Icons = {
   ),
   mdx: FileType,
   json: FileJson,
+  ts: FileType2,
 };

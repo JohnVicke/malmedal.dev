@@ -4,7 +4,7 @@ import Text from "../Text";
 import { Icons } from "../Icons";
 import { Card } from "../Card";
 
-type Extensions = keyof Pick<typeof Icons, "mdx" | "json">;
+type Extensions = keyof Pick<typeof Icons, "mdx" | "json" | "ts">;
 
 type FolderBase = `${string}/`;
 type Folder = FolderBase | `${FolderBase}${FolderBase}`;
@@ -54,17 +54,11 @@ export function Tree(props: TreeProps) {
 }
 
 function DetailsElement(props: { node: Node; index: number }) {
-  const groupId = props.index === 0 ? "group/one" : "group/two";
   return (
-    <details className={cn("ml-4", groupId)} open>
+    <details className={cn("group ml-4")} open>
       <summary className="inline-flex cursor-pointer items-center gap-x-2 rounded-sm transition-all hover:bg-foreground/10">
         <span className="inline-flex items-center gap-x-2 whitespace-nowrap">
-          <Icons.chevronDown
-            className={cn(
-              "h-4 w-4 transition-all",
-              `${groupId}-open:rotate-180`,
-            )}
-          />
+          <Icons.chevronDown className={cn("h-4 w-4 transition-all")} />
           <Icons.folder />
         </span>
         {props.node.name}

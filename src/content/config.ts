@@ -1,12 +1,11 @@
-import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { z, defineCollection } from "astro:content";
 
 const linkSchema = z.object({
   href: z.string().url(),
   label: z.string(),
 });
 
-const blogSchema = z.object({
+const postSchema = z.object({
   title: z.string(),
   description: z.string(),
   date: z.string().transform((str) => new Date(str)),
@@ -24,7 +23,7 @@ const projectSchema = z.object({
 
 const blog = defineCollection({
   type: "content",
-  schema: blogSchema,
+  schema: postSchema,
 });
 
 const project = defineCollection({
@@ -37,5 +36,5 @@ export const collections = {
   project,
 };
 
-export type Blog = z.infer<typeof blogSchema>;
+export type Blog = z.infer<typeof postSchema>;
 export type Project = z.infer<typeof projectSchema>;

@@ -30,6 +30,9 @@ const tree = {
             },
           ],
         },
+        {
+          name: "config.ts",
+        },
       ],
     },
   ],
