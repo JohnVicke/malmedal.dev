@@ -18,40 +18,41 @@ const { title, description, image } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
-  <script is:inline>
-    const setTheme = () => {
-      const theme = localStorage.getItem("theme") ?? "dark";
-      localStorage.setItem("theme", theme);
-      document.querySelector("html").className = theme;
-    };
-    setTheme();
-    document.addEventListener("astro:after-swap", setTheme);
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-  <meta name="generator" content={Astro.generator} />
-  <meta
-    name="description"
-    content={description ?? "Viktor Malmedal personal website and portfolio"}
-  />
-  <ViewTransitions />
-  <title>{title}</title>
-  <!-- open graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Viktor Malmedal" />
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
+  <head>
+    <script is:inline>
+      const setTheme = () => {
+        const theme = localStorage.getItem("theme") ?? "dark";
+        localStorage.setItem("theme", theme);
+        document.querySelector("html").className = theme;
+      };
+      setTheme();
+      document.addEventListener("astro:after-swap", setTheme);
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content={description ?? "Viktor Malmedal personal website and portfolio"}
+    />
+    <ViewTransitions />
+    <title>{title}</title>
+    <!-- open graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Viktor Malmedal" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
 
-  <!-- twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={Astro.url} />
-  <meta property="twitter:title" content={title} />
-  <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={image} />
-
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+  </head>
   <body
     class="h-screen w-screen overflow-x-hidden flex flex-col justify-between"
   >
