@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "malmedal.dev",
   "packageManager": "pnpm@8.5.0",
   "engines": {
     "node": "^18"
@@ -18,25 +18,26 @@
     "xata:pull": "xata pull main"
   },
   "devDependencies": {
-    "@astrojs/react": "^2.2.1",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/react": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
     "@types/react": "^18.2.15",
-    "astro": "^2.8.4",
+    "astro": "^3.0.8",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.11.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/vercel": "^3.7.3",
+    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/vercel": "^4.0.3",
     "@fontsource/fira-code": "^5.0.5",
     "@types/uuid": "^9.0.2",
     "@xata.io/client": "^0.26.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "lucide-react": "^0.262.0",
+    "lucide-react": "^0.274.0",
     "mdast-util-to-string": "^4.0.0",
     "rehype-pretty-code": "^0.10.0",
     "tailwind-merge": "^1.14.0",

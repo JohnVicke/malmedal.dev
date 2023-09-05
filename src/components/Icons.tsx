@@ -2,13 +2,11 @@ import {
   ArrowUpRight,
   CheckCheck,
   ChevronDown,
-  ChevronUp,
   Copy,
   FileJson,
   FileType,
   Folder,
   Home,
-  LucideProps,
   Mail,
   Monitor,
   Moon,
@@ -16,6 +14,7 @@ import {
   ScrollText,
   Sun,
 } from "lucide-react";
+import { type LucideProps } from "lucide-react";
 import React from "react";
 
 export const Icons = {
@@ -41,6 +40,7 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="24 / symbols / linkedin">
+        <title className="sr-only">LinkedIn</title>
         <path
           className="fill-foreground"
           id="icon"
@@ -62,6 +62,7 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="24 / symbols / github">
+        <title className="sr-only">GitHub</title>
         <path
           className="fill-foreground"
           id="icon"

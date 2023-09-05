@@ -1,5 +1,5 @@
 import React from "react";
-import { FileTree, TreeProps } from "./Tree";
+import { FileTree, type TreeProps } from "./Tree";
 
 const tree = {
   nodes: [

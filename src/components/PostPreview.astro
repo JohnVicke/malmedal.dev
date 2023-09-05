@@ -20,6 +20,7 @@ const {
 ---
 
 <article
+  transition:name={`blog-root-${title}`}
   class={cn(button, "relative justify-between gap-x-2 flex items-center")}
 >
   <a class="absolute inset-0 z-10" href={`/blog/${slug}`}>
@@ -27,10 +28,15 @@ const {
   </a>
   <div class="flex flex-col gap-y-2">
     <div class="flex flex-col gap-2">
-      <Text className="mb-0 text-base" level="h3">
+      <Text
+        transition:name={`blog-title-${title}`}
+        className="mb-0 text-base"
+        level="h3"
+      >
         {title}
       </Text>
       <span
+        transition:name={`blog-meta-${title}`}
         class="flex flex-wrap items-center gap-x-2 text-foreground/70 text-sm"
       >
         <time>{displayDateBuilder(date).format()}</time>

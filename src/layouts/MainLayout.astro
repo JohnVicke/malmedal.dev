@@ -1,5 +1,6 @@
 ---
 import "@fontsource/fira-code";
+import { ViewTransitions } from "astro:transitions";
 
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
@@ -18,9 +19,13 @@ const { title, description, image } = Astro.props as Props;
 <!DOCTYPE html>
 <html lang="en">
   <script is:inline>
-    const theme = localStorage.getItem("theme") ?? "dark";
-    localStorage.setItem("theme", theme);
-    document.querySelector("html").className = theme;
+    const setTheme = () => {
+      const theme = localStorage.getItem("theme") ?? "dark";
+      localStorage.setItem("theme", theme);
+      document.querySelector("html").className = theme;
+    };
+    setTheme();
+    document.addEventListener("astro:after-swap", setTheme);
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
@@ -30,6 +35,7 @@ const { title, description, image } = Astro.props as Props;
     name="description"
     content={description ?? "Viktor Malmedal personal website and portfolio"}
   />
+  <ViewTransitions />
   <title>{title}</title>
   <!-- open graph -->
   <meta property="og:type" content="website" />
