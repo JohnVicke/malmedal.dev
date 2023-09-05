@@ -2,13 +2,11 @@ import {
   ArrowUpRight,
   CheckCheck,
   ChevronDown,
-  ChevronUp,
   Copy,
   FileJson,
   FileType,
   Folder,
   Home,
-  type LucideProps,
   Mail,
   Monitor,
   Moon,
@@ -16,6 +14,7 @@ import {
   ScrollText,
   Sun,
 } from "lucide-react";
+import { type LucideProps } from "lucide-react";
 import React from "react";
 
 export const Icons = {

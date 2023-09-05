@@ -11,7 +11,7 @@ interface CalloutProps {
 
 export function Callout(props: React.PropsWithChildren<CalloutProps>) {
   return (
-    <Card className={props.className}>
+    <Card className={props.className ?? ""}>
       <Text level="h3">{props.title}</Text>
       <Text>{props.description}</Text>
       {props.children}
