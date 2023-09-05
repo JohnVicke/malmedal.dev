@@ -24,21 +24,21 @@ export default function Code(props: CodeblockProps) {
   }, [ref.current]);
 
   return (
-    <>
+    <div>
       <pre
         ref={ref}
-        className="relative my-8 overflow-x-auto rounded-lg border border-foreground/20 bg-background p-4 font-mono text-sm font-semibold"
+        className="relative overflow-x-auto rounded-lg bg-foreground/5 bg-none p-4 font-mono text-sm font-semibold shadow shadow-foreground/10 outline outline-1 outline-foreground/10"
         {...rest}
       >
         {children}
+        {rawString && (
+          <CopyButton
+            className="absolute right-10 top-4 z-10 hidden sm:block"
+            rawString={rawString}
+          />
+        )}
       </pre>
-      {rawString && (
-        <CopyButton
-          className="absolute right-10 top-4 z-10 hidden sm:block"
-          rawString={rawString}
-        />
-      )}
-    </>
+    </div>
   );
 }
 

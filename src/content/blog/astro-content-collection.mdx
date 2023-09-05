@@ -12,6 +12,7 @@ import Li from "../../components/mdx/Li";
 import Ul from "../../components/mdx/Ul";
 import { Callout } from "../../components/Callout"
 import AstroCollectionTree from "../../components/mdx/AstroCollectionTree";
+import Steps from "../../components/mdx/Steps";
 
 export const components = {
   a: Link,
@@ -35,19 +36,25 @@ Content collections live inside Astro's reserved `src/content` directory and gen
 Astro has excellent documentation, if you want to dive deeper into the framework and especially Content Collections 
 I recommend you to check out the [official documentation](https://docs.astro.build/en/guides/content-collections/).
 
-### Zod
-
-
-### MDX
-
-### JSON
-
 ## Xata serverless Postgres ❤️ Astro
+As you might have noticed, every blog post keeps track of the number of times someone has visited the post. In order to persist the data I decided to try out [Xata](https://xata.io/). Xata is a serverless database platform for Postgres and has excellent integration with Astro. To get up and running, start by installing Xata and logging in:
+
+<Steps>
+```bash
+npm install -g @xata.io/cli
+```
+```bash
+xata auth login
+```
+</Steps>
+
+Xata has a more extensive getting started guide.
+
 
 <Callout title="Hello" description="world" className="my-8"/>
 
 ## Vercel Analytics
 
-```js
+```js title=".env"
 const posts = await getCollection("blog");
 ```

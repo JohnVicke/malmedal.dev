@@ -9,7 +9,7 @@ export function Card(props: React.PropsWithChildren<CardProps>) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-y-2 rounded-md bg-foreground/5 p-4 outline outline-1 outline-foreground/10",
+        "my-8 flex flex-col gap-y-2 rounded-md bg-foreground/5 p-4 shadow shadow-foreground/10 outline outline-1 outline-foreground/10",
         props.className,
       )}
     >

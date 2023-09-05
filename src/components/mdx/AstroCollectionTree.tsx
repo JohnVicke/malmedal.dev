@@ -1,5 +1,5 @@
 import React from "react";
-import { Tree, TreeProps } from "./Tree";
+import { FileTree, TreeProps } from "./Tree";
 
 const tree = {
   nodes: [
@@ -8,6 +8,7 @@ const tree = {
       nodes: [
         {
           name: "blog/",
+          description: "blog collection",
           nodes: [
             {
               name: "blog-post-1.mdx",
@@ -15,8 +16,17 @@ const tree = {
             {
               name: "blog-post-2.mdx",
             },
+          ],
+        },
+        {
+          name: "projects/",
+          description: "project collection",
+          nodes: [
             {
-              name: "blog-post-3.mdx",
+              name: "project-1.json",
+            },
+            {
+              name: "project-2.json",
             },
           ],
         },
@@ -26,5 +36,5 @@ const tree = {
 } satisfies TreeProps;
 
 export default function AstroCollectionTree() {
-  return <Tree nodes={tree.nodes} />;
+  return <FileTree nodes={tree.nodes} />;
 }

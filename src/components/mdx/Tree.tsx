@@ -2,15 +2,17 @@ import { cn } from "@/utils/cn";
 import React from "react";
 import Text from "../Text";
 import { Icons } from "../Icons";
+import { Card } from "../Card";
 
-type Extensions = ".mdx" | ".md" | ".tsx" | ".astro";
+type Extensions = keyof Pick<typeof Icons, "mdx" | "json">;
 
 type FolderBase = `${string}/`;
-type Folder = FolderBase | `${string}${FolderBase}`;
-type File = `${string}${Extensions}`;
+type Folder = FolderBase | `${FolderBase}${FolderBase}`;
+type File = `${string}.${Extensions}`;
 
 interface Node {
   name: Folder | File;
+  description?: string;
   nodes?: Node[];
 }
 
@@ -21,21 +23,27 @@ export interface TreeProps {
   index?: number;
 }
 
+export function FileTree(props: TreeProps) {
+  return (
+    <Card className="overflow-x-auto px-0">
+      <Tree {...props} />
+    </Card>
+  );
+}
+
 export function Tree(props: TreeProps) {
   const { root = true, index = 0, nodes } = props;
   return (
     <ul
       className={cn(
-        "flex list-inside flex-col gap-y-4",
-        root ? "my-8" : "my-2 border-l border-l-foreground/20",
+        "my-2 flex list-inside flex-col gap-y-2",
+        !root && "my-2 ml-2 border-l border-l-foreground/20",
       )}
     >
       {nodes.map((node) => (
         <React.Fragment key={node.name}>
           {node.name.includes("/") ? (
-            <>
-              <DetailsElement node={node} index={index} />
-            </>
+            <DetailsElement node={node} index={index} />
           ) : (
             <ListElement node={node} />
           )}
@@ -46,22 +54,34 @@ export function Tree(props: TreeProps) {
 }
 
 function DetailsElement(props: { node: Node; index: number }) {
-  const id = `tree-${props.index}`;
+  const groupId = props.index === 0 ? "group/one" : "group/two";
   return (
-    <details className={cn("ml-6", `group/${id}`)} open>
-      <summary className="inline-flex gap-x-2">
-        <Icons.chevronDown
-          className={cn("transition-all", `group-open/${id}:rotate-180`)}
-        />
-        <Icons.folder />
+    <details className={cn("ml-4", groupId)} open>
+      <summary className="inline-flex cursor-pointer items-center gap-x-2 rounded-sm transition-all hover:bg-foreground/10">
+        <span className="inline-flex items-center gap-x-2 whitespace-nowrap">
+          <Icons.chevronDown
+            className={cn(
+              "h-4 w-4 transition-all",
+              `${groupId}-open:rotate-180`,
+            )}
+          />
+          <Icons.folder />
+        </span>
         {props.node.name}
+        {props.node.description && (
+          <span className="ml-8 whitespace-nowrap text-sm text-foreground/50">
+            // {props.node.description}
+          </span>
+        )}
       </summary>
-      <Tree
-        root={false}
-        nodes={props.node.nodes}
-        className="ml-4"
-        index={props.index + 1}
-      />
+      {props.node.nodes && (
+        <Tree
+          root={false}
+          nodes={props.node.nodes}
+          className="ml-4"
+          index={props.index + 1}
+        />
+      )}
     </details>
   );
 }
@@ -69,14 +89,22 @@ function DetailsElement(props: { node: Node; index: number }) {
 function ListElement(props: { node: Node }) {
   return (
     <li className="ml-6">
-      <Text className="inline-flex gap-x-2">
-        {getFileIcon(props.node.name)}
-        {props.node.name}
+      <Text className="inline-flex items-center gap-x-2">
+        <span className="inline-flex items-center gap-x-2 whitespace-nowrap">
+          {getFileIcon(props.node.name as File)}
+          {props.node.name}
+        </span>
+        {props.node.description && (
+          <span className="ml-8 whitespace-nowrap text-sm text-foreground/50">
+            // {props.node.description}
+          </span>
+        )}
       </Text>
     </li>
   );
 }
 
-function getFileIcon(name: FileName) {
-  return <Icons.sun />;
+function getFileIcon(name: File) {
+  const Icon = Icons[name.split(".")[1] as keyof typeof Icons];
+  return <Icon className="h-4 w-4" />;
 }

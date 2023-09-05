@@ -61,8 +61,7 @@
   }
 
   [data-rehype-pretty-code-title] {
-    padding: 0.75rem 0 0.75rem 2.5rem;
-    @apply mt-4 rounded-t-lg border border-b-0;
+    @apply rounded-t-lg bg-foreground/10 px-4 py-2 text-sm;
   }
 
   [data-rehype-pretty-code-title]:has(+ [data-language-icon]) {

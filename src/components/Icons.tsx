@@ -4,6 +4,8 @@ import {
   ChevronDown,
   ChevronUp,
   Copy,
+  FileJson,
+  FileType,
   Folder,
   Home,
   LucideProps,
@@ -71,4 +73,6 @@ export const Icons = {
       </g>
     </svg>
   ),
+  mdx: FileType,
+  json: FileJson,
 };
