@@ -1,5 +1,6 @@
 ---
 import "@fontsource/fira-code";
+import { ViewTransitions } from "astro:transitions";
 
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
@@ -34,6 +35,7 @@ const { title, description, image } = Astro.props as Props;
     name="description"
     content={description ?? "Viktor Malmedal personal website and portfolio"}
   />
+  <ViewTransitions />
   <title>{title}</title>
   <!-- open graph -->
   <meta property="og:type" content="website" />
