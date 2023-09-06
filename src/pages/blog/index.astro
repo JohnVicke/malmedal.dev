@@ -3,9 +3,7 @@ import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
 import PostPreview from "@/components/PostPreview.astro";
 import Text from "@/components/Text";
-import { getPageViews } from "@/db/get-pageviews";
-
-const pageViews = await getPageViews();
+import BlogViews from "@/components/BlogViews.astro";
 
 const posts = await getCollection("blog", ({ data }) => {
   return !data.draft;
@@ -28,8 +26,9 @@ const title = "viktor • blog";
             slug,
             ...data,
           }}
-          views={pageViews.find((pageView) => pageView.id === slug)?.views ?? 0}
-        />
+        >
+          <BlogViews slot="views" slug={slug} />
+        </PostPreview>
       ))
     }
   </div>

@@ -1,0 +1,16 @@
+---
+import { getOrUpdateBlogViews } from "@/db/get-or-update";
+
+interface Props {
+  slug: string;
+  update?: boolean;
+  elem?: "span" | "p";
+  className?: string;
+}
+
+const { slug, update, elem: Element = "p", className } = Astro.props;
+
+const blogRecord = await getOrUpdateBlogViews(slug, update);
+---
+
+<Element class={className}>· {blogRecord?.views ?? 0} views</Element>

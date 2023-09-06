@@ -4,12 +4,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { Callout } from "@/components/Callout";
 import Link from "@/components/Link";
 import Text from "@/components/Text";
-import { updateAndSelectPageView } from "@/db/update-page-view";
 import {
   displayDateBuilder,
   displayReadingTimeBuilder,
-  addBullet,
 } from "@/utils/display-text-builder";
+import BlogViews from "@/components/BlogViews.astro";
 
 const { slug } = Astro.params;
 
@@ -27,10 +26,6 @@ const {
 } = entry;
 
 const { Content, remarkPluginFrontmatter } = await render();
-
-const res = await (import.meta.env.DEV
-  ? Promise.resolve({ views: 0 })
-  : updateAndSelectPageView(slug));
 ---
 
 <MainLayout title={title} description={description}>
@@ -66,9 +61,12 @@ const res = await (import.meta.env.DEV
             .format()
         } read</span
       >
-      <span class="text-foreground/70">
-        {addBullet(res?.views ?? 0)} views</span
-      >
+      <BlogViews
+        slug={slug}
+        update
+        elem="span"
+        className="text-foreground/70"
+      />
     </p>
     <Text className="my-8">{description}</Text>
     <div class="flex-1 mb-12">

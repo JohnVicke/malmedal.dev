@@ -10,12 +10,10 @@ export interface Props {
   post: Blog & {
     slug: string;
   };
-  views?: number;
 }
 
 const {
   post: { title, slug, date },
-  views,
 } = Astro.props as Props;
 ---
 
@@ -40,7 +38,7 @@ const {
         class="flex flex-wrap items-center gap-x-2 text-foreground/70 text-sm"
       >
         <time>{displayDateBuilder(date).format()}</time>
-        {views && <p>· {views} views</p>}
+        <slot name="views" />
       </span>
     </div>
   </div>
