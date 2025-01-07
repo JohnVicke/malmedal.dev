@@ -11,7 +11,7 @@ const config = {
   trailingComma: "all",
   tabWidth: 2,
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  tailwindConfig: "./tailwind.config.cjs",
+  tailwindConfig: "./tailwind.config.ts",
   overrides: [
     {
       files: "*.astro",
