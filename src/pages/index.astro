@@ -1,6 +1,5 @@
 ---
 import { Icons } from "@/components/Icons";
-import Link from "@/components/Link";
 import Text from "@/components/Text";
 
 import MainLayout from "../layouts/MainLayout.astro";
@@ -14,75 +13,74 @@ export const prerender = true;
 const indexPost = await getEntryBySlug("blog", "index");
 
 const title = "viktor • home";
+
+const content = {
+  intro: {
+    name: "Viktor Malmedal",
+    tagline: "Passionate backend engineer from the north",
+  },
+  background: {
+    main: `I'm specialized in web development, with a strong focus on backend systems. Currently, I'm working as a backend engineer at Anyfin, where I help build systems that improve people's financial well-being across Europe.`,
+    experience: `My journey has been diverse, having worked with large corporations like Cygni and Schibsted, agile startups like Coeo, and now contributing to Anyfin's mission of transforming financial services. This varied experience has broadened my knowledge, enabling me to adapt and thrive in any environment.`,
+  },
+  socialLinks: [
+    {
+      href: "https://www.linkedin.com/in/viktor-malmedal",
+      icon: "linkedIn",
+      text: "View profile",
+    },
+    {
+      href: "mailto:viktor@malmedal.dev",
+      icon: "mail",
+      text: "Mail me",
+    },
+  ],
+  blog: {
+    intro: `I recently kicked off my blogging journey, where I'll be sharing my thoughts and insights on various topics as I learn and make progress. It will be a fun challenge to document my personal and professional journey.`,
+  },
+  personal: {
+    activities: `When I'm not coding you'll find me embracing an active lifestyle, climbing, skiing or playing disc golf.`,
+  },
+  tldr: "I like to create cool stuff",
+};
 ---
 
 <MainLayout title={title}>
   <Text level="h1">
-    Hi 👋, <br class="block sm:hidden" /> I'm Viktor Malmedal
+    {content.intro.name} 
   </Text>
   <div class="flex flex-col gap-y-8">
-    <Text>Passionate full stack engineer from the north</Text>
+    <Text>{content.intro.tagline}</Text>
     <div class="border-b border-b-foreground/20 w-full"></div>
     <Text>
-      I’m specialized in <b>web development</b>, and enjoy exploring the latest
-      frameworks <i>(before they become legacy)</i> to build <b
-        >seamless digital solutions</b
-      >. My journey has been <b>diverse</b>, having worked with large
-      corporations like
-      <Link href="https://cygni.se/" children="Cygni" />
-       and <Link href="https://schibsted.com/" children="Schibsted" /> and agile
-      startups like <Link href="https://en.coeo.events/" children="Coeo" />.
-      This <b>varied experience</b> has broadened my <b>knowledge</b>, enabling
-      me to <b>adapt and thrive in any environment</b>.
+      {content.background.main}
     </Text>
     <div class="w-full gap-4 flex flex-col sm:flex-row justify-center">
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        class={cn(button, "gap-4 inline-flex justify-between")}
-        href="https://www.linkedin.com/in/viktor-malmedal"
-      >
-        <div class="flex gap-x-4">
-          <Icons.linkedIn />
-           View profile
-        </div>
-        <Icons.arrowUpRight className="min-w-8" />
-      </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        class={cn(button, "gap-4 inline-flex justify-between")}
-        href="mailto:viktor@malmedal.dev"
-      >
-        <div class="flex gap-x-4">
-          <Icons.mail />
-           Mail me
-        </div>
-        <Icons.arrowUpRight className="min-w-8" />
-      </a>
+      {content.socialLinks.map(({ href, icon, text }) => (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class={cn(button, "gap-4 inline-flex justify-between font-bold")}
+            href={href}
+          >
+            <div class="flex gap-x-4">
+              <Icons[icon] />
+              {text}
+            </div>
+            <Icons.arrowUpRight className="min-w-8" />
+          </a>
+        ))}
     </div>
     <Text>
-      I recently kicked off my <b>blogging journey</b>, where I'll be sharing my
-
-
-      <b>thoughts</b> and <b>insights</b> on various topics as I <b>learn</b>
-       and make
-      <b>progress</b>. It will be a fun <b>challenge</b> to document my <b
-        >personal</b
-      > and <b>professional</b> journey.
+      {content.blog.intro}
     </Text>
     <PostPreview post={{ ...indexPost.data, slug: "index" }} />
     <Text>
-      When I'm not <b>coding</b> you'll find me embracing an <b
-        >active lifestyle</b
-      > as a competitive <b>powerlifter</b>, struggling <b>disc golfer</b>,
-      retired <b>action sports</b>
-       enthusiast and <b>avid gamer</b>.
+      {content.personal.activities}
     </Text>
     <div class="border-b border-b-foreground/20 w-full"></div>
     <Text className="italic">
-      <span class="font-bold not-italic">tl;dr</span> I like to create cool
-      stuff
+      <span class="font-bold not-italic">tl;dr</span>{" "} {content.tldr}
     </Text>
   </div>
 </MainLayout>
