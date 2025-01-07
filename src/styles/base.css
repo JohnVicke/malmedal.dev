@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 85%;
+    --background: 263 51% 95%;
     --foreground: 263 51% 8%;
     --primary: 169 39% 61%;
 
@@ -18,20 +18,22 @@
   }
 
   .dark {
-    --background: 263 51% 8%;
-    --foreground: 0 0% 85%;
+    --background: 263 51% 5%;
+    --foreground: 263 51% 95%;
   }
 }
 
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-family: "Fira Code", monospace;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+    @apply font-inter;
+  }
+  h1, h2, h3 , a{
+    @apply font-grotesque;
   }
 }
+
+
 @layer components {
   /* Hamburger menu icon animation */
 
