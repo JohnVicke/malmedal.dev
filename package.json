@@ -2,7 +2,7 @@
   "name": "malmedal.dev",
   "packageManager": "pnpm@9.15.3",
   "engines": {
-    "node": "^23"
+    "node": "^22"
   },
   "version": "0.0.1",
   "private": true,
