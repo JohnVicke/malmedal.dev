@@ -1,7 +1,7 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { toString as mdastToString } from "mdast-util-to-string";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -70,7 +70,7 @@ const prettyCodeOptions = {
 export default defineConfig({
   integrations: [
     tailwind({
-      configFile: "./tailwind.config.cjs",
+      configFile: "./tailwind.config.ts",
       applyBaseStyles: false,
     }),
     react(),

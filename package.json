@@ -1,8 +1,8 @@
 {
   "name": "malmedal.dev",
-  "packageManager": "pnpm@8.5.0",
+  "packageManager": "pnpm@9.15.3",
   "engines": {
-    "node": "^18"
+    "node": "^23"
   },
   "version": "0.0.1",
   "private": true,
@@ -18,11 +18,11 @@
     "xata:pull": "xata pull main"
   },
   "devDependencies": {
-    "@astrojs/react": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/react": "^4.1.2",
+    "@astrojs/tailwind": "^5.1.4",
     "@types/react": "^18.2.15",
-    "astro": "^3.0.8",
-    "prettier": "^3.0.0",
+    "astro": "^5.1.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.11.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "react": "^18.2.0",
@@ -30,9 +30,10 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.0",
-    "@astrojs/vercel": "^4.0.3",
-    "@fontsource/fira-code": "^5.0.5",
+    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/vercel": "^8.0.1",
+    "@fontsource-variable/bricolage-grotesque": "^5.1.1",
+    "@fontsource-variable/inter": "^5.1.1",
     "@types/uuid": "^9.0.2",
     "@xata.io/client": "^0.26.0",
     "class-variance-authority": "^0.7.0",
