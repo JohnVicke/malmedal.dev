@@ -26,12 +26,12 @@ const content = {
   socialLinks: [
     {
       href: "https://www.linkedin.com/in/viktor-malmedal",
-      icon: "linkedIn",
+      icon: "linkedIn" as keyof typeof Icons,
       text: "View profile",
     },
     {
       href: "mailto:viktor@malmedal.dev",
-      icon: "mail",
+      icon: "mail" as keyof typeof Icons,
       text: "Mail me",
     },
   ],
@@ -47,7 +47,7 @@ const content = {
 
 <MainLayout title={title}>
   <Text level="h1">
-    {content.intro.name} 
+    {content.intro.name}
   </Text>
   <div class="flex flex-col gap-y-8">
     <Text>{content.intro.tagline}</Text>
@@ -56,20 +56,25 @@ const content = {
       {content.background.main}
     </Text>
     <div class="w-full gap-4 flex flex-col sm:flex-row justify-center">
-      {content.socialLinks.map(({ href, icon, text }) => (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            class={cn(button, "gap-4 inline-flex justify-between font-bold")}
-            href={href}
-          >
-            <div class="flex gap-x-4">
-              <Icons[icon] />
-              {text}
-            </div>
-            <Icons.arrowUpRight className="min-w-8" />
-          </a>
-        ))}
+      {
+        content.socialLinks.map(({ href, icon, text }) => {
+          const IconComponent = Icons[icon];
+          return (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              class={cn(button, "gap-4 inline-flex justify-between font-bold")}
+              href={href}
+            >
+              <div class="flex gap-x-4">
+                <IconComponent />
+                {text}
+              </div>
+              <Icons.arrowUpRight className="min-w-8" />
+            </a>
+          );
+        })
+      }
     </div>
     <Text>
       {content.blog.intro}
@@ -80,7 +85,8 @@ const content = {
     </Text>
     <div class="border-b border-b-foreground/20 w-full"></div>
     <Text className="italic">
-      <span class="font-bold not-italic">tl;dr</span>{" "} {content.tldr}
+      <span class="font-bold not-italic">tl;dr</span>{" "}
+      {content.tldr}
     </Text>
   </div>
 </MainLayout>
