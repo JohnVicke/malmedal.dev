@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   ArrowUpRight,
   CheckCheck,
   ChevronDown,
@@ -27,6 +28,7 @@ export const Icons = {
   sun: Sun,
   moon: Moon,
   arrowUpRight: ArrowUpRight,
+  arrowRight: ArrowRight,
   copy: Copy,
   check: CheckCheck,
   folder: Folder,

@@ -6,26 +6,17 @@ import { ToggleColorTheme } from "./ToggleColorTheme";
 
 const { pathname } = Astro.url;
 const isBlog = pathname.includes("/blog/") || pathname === "/blog";
-const isProject = pathname.includes("/projects/") || pathname === "/projects";
 ---
 
-<div class="fixed top-0 z-50 backdrop-blur-md w-full py-2 flex justify-center">
+<div
+  class="fixed md:top-0 z-50 backdrop-blur-md w-full py-2 flex justify-center"
+>
   <div
     class="px-4 w-full max-w-screen-md m-auto flex items-center justify-between"
   >
     <nav class="flex gap-x-8">
-      <NavItem href="/" active={pathname === "/"}>
-        <Icons.home className="sm:block hidden" />
-         Home
-      </NavItem>
-      <NavItem href="/projects" active={isProject}>
-        <Icons.rocket className="sm:block hidden" />
-         Projects
-      </NavItem>
-      <NavItem href="/blog" active={isBlog}>
-        <Icons.blog className="sm:block hidden" />
-         Blog
-      </NavItem>
+      <NavItem href="/" active={pathname === "/"}>Home</NavItem>
+      <NavItem href="/blog" active={isBlog}>Blog</NavItem>
     </nav>
     <ToggleColorTheme client:visible />
   </div>

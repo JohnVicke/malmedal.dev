@@ -1,6 +1,6 @@
 import React from "react";
 import { Icons } from "../Icons";
-import { cn } from "@/utils/cn";
+import { cn } from "../../utils/cn";
 
 export type CodeblockProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLPreElement>,
@@ -50,7 +50,7 @@ function CopyButton(props: { className?: string; rawString: string }) {
   const [copied, setCopied] = React.useState(false);
 
   React.useEffect(() => {
-    let timeout: number;
+    let timeout: NodeJS.Timeout;
     if (copied) {
       timeout = setTimeout(() => {
         setCopied(false);
