@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import React from "react";
-import { cn } from "@/utils/cn";
+import { cn } from "~/utils/cn";
 
 export type TextComponent = Extract<
   keyof JSX.IntrinsicElements,
