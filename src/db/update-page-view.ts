@@ -1,21 +1,22 @@
-import { XataClient } from "./xata";
+import { getSecret } from "astro:env/server"
+import { getXataClient } from "./instance";
 
 export async function updateAndSelectPageView(id: string) {
-  if (import.meta.env.DEV) return Promise.resolve({ views: 1337 });
-  const xata = new XataClient({
-    apiKey: import.meta.env.XATA_API_KEY,
-    branch: import.meta.env.XATA_BRANCH ?? "main",
-  });
+  if (getSecret("DEV")) {
+    return Promise.resolve({ views: 1337 });
+  }
 
-  const exists = await xata.db["post-meta"].read(id);
+  const client = getXataClient()
+
+  const exists = await client.db["post-meta"].read(id);
 
   if (!exists) {
-    return xata.db["post-meta"].create({
+    return client.db["post-meta"].create({
       id,
       views: 1,
     });
   }
-  return xata.db["post-meta"].update({
+  return client.db["post-meta"].update({
     id,
     views: {
       $increment: 1,

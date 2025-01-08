@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import MainLayout from "@/layouts/MainLayout.astro";
-import PostPreview from "@/components/PostPreview.astro";
-import Text from "@/components/Text";
-import BlogViews from "@/components/BlogViews.astro";
+import MainLayout from "~/layouts/MainLayout.astro";
+import PostPreview from "~/components/PostPreview.astro";
+import Text from "~/components/Text";
+import BlogViews from "~/components/BlogViews.astro";
 
 const posts = await getCollection("blog", ({ data }) => {
   return !data.draft;

@@ -1,14 +1,14 @@
 ---
 import { getEntry } from "astro:content";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { Callout } from "@/components/Callout";
-import Link from "@/components/Link";
-import Text from "@/components/Text";
+import MainLayout from "~/layouts/MainLayout.astro";
+import { Callout } from "~/components/Callout";
+import Link from "~/components/Link";
+import Text from "~/components/Text";
 import {
   displayDateBuilder,
   displayReadingTimeBuilder,
-} from "@/utils/display-text-builder";
-import BlogViews from "@/components/BlogViews.astro";
+} from "~/utils/display-text-builder";
+import BlogViews from "~/components/BlogViews.astro";
 
 const { slug } = Astro.params;
 

@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "~/utils/cn";
 import React from "react";
 import Text from "../Text";
 import { Icons } from "../Icons";
