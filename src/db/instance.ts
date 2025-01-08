@@ -1,5 +1,5 @@
 import { XataClient } from "./xata";
-import { getSecret } from "astro:env/server"
+import { getSecret } from "astro:env/server";
 
 let instance: XataClient | undefined = undefined;
 
@@ -8,7 +8,7 @@ export const getXataClient = () => {
 
   instance = new XataClient({
     apiKey: getSecret("XATA_API_KEY")!,
-    branch: getSecret("XATA_BRANCH")!
+    branch: getSecret("XATA_BRANCH")!,
   });
 
   return instance;

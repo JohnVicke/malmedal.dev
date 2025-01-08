@@ -4,18 +4,9 @@
     "baseUrl": ".",
     "jsx": "react",
     "paths": {
-      "~/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"]
     }
   },
-  "include": [
-    ".astro/types.d.ts",
-    "astro.config.mjs",
-    "src/**/*",
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": [".astro/types.d.ts", "astro.config.mjs", "src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,4 +1,4 @@
-import { getSecret } from "astro:env/server"
+import { getSecret } from "astro:env/server";
 import { getXataClient } from "./instance";
 
 export async function updateAndSelectPageView(id: string) {
@@ -6,7 +6,7 @@ export async function updateAndSelectPageView(id: string) {
     return Promise.resolve({ views: 1337 });
   }
 
-  const client = getXataClient()
+  const client = getXataClient();
 
   const exists = await client.db["post-meta"].read(id);
 
